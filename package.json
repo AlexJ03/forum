@@ -13,6 +13,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/dotenv-webpack": "^7.0.4",
     "@types/node": "^20.4.5",
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
@@ -32,6 +33,8 @@
     "webpack-merge": "^5.9.0"
   },
   "dependencies": {
+    "dotenv-webpack": "^8.0.1",
+    "firebase": "^10.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",

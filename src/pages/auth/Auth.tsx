@@ -1,8 +1,12 @@
+import Register from "../../components/register/Register";
+import Login from "../../components/login/Login";
+
 const Auth = () => {
 
     return (
         <div>
-            <h1>Auth</h1>
+            <Register />
+            <Login />
         </div>
     );
 };
