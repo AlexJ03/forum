@@ -5,7 +5,7 @@ import { HTMLWebpackPluginOptions, MiniCssExtractPluginOptions } from "./options
 
 const HTMLWebpackPlugin = new HtmlWebpackPlugin(HTMLWebpackPluginOptions);
 
-const MINICssExtractPlugin = new MiniCssExtractPlugin(MiniCssExtractPluginOptions)
+const MINICssExtractPlugin = new MiniCssExtractPlugin(MiniCssExtractPluginOptions);
 
 const ProgressPlugin = new webpack.ProgressPlugin();
 

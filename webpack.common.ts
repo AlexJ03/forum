@@ -11,6 +11,6 @@ const config: webpack.Configuration = {
     module: { rules },
     resolve,
     plugins: plugins,
-}
+};
 
 export default config;

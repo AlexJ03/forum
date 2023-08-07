@@ -1,15 +1,13 @@
-import {useState} from "react";
+import {Route, Routes} from "react-router-dom";
+import Auth from "./pages/auth/Auth";
 
 const App = () => {
-    const [count, setCount] = useState(0);
 
-    return (
-        <div>
-            <h1>{count}</h1>
-            <button onClick={() => setCount(prev => prev + 1)}>+</button>
-            <button onClick={() => setCount(prev => prev - 1)}>-</button>
-        </div>
-    )
-}
+  return (
+    <Routes>
+        <Route path="/" element={<Auth />} />
+    </Routes>
+  );
+};
 
 export default App;
