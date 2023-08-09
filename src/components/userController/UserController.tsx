@@ -1,10 +1,11 @@
-import { IconButton, Menu, MenuItem } from "@mui/material";
-import { PiUserCircle } from "react-icons/pi";
+import { Button, Menu, MenuItem, Typography } from "@mui/material";
+import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { userAuth } from "../../mobx/userAuth";
 import { userProfileModal } from "../../mobx/userProfileModal";
 import UserProfileModal from "../userProfileModal/UserProfileModal";
+import { userToken } from "../../helpers/auth";
 
 const UserController = observer( () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>( null );
@@ -21,9 +22,10 @@ const UserController = observer( () => {
 
     return (
         <>
-            <IconButton aria-label="delete" onClick={handleClick}>
-                <PiUserCircle size={40} />
-            </IconButton>
+            <Button onClick={handleClick}>
+                <Typography fontSize="20px" marginX={2}>{userToken.getToken()}</Typography>
+                { open ? <BiUpArrowAlt size={28} /> : <BiDownArrowAlt size={28} />}
+            </Button>
 
             <Menu
                 id="basic-menu"
