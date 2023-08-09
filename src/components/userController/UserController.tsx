@@ -6,6 +6,7 @@ import { userAuth } from "../../mobx/userAuth";
 import { userProfileModal } from "../../mobx/userProfileModal";
 import UserProfileModal from "../userProfileModal/UserProfileModal";
 import { userToken } from "../../helpers/auth";
+import { userData } from "../../mobx/userData";
 
 const UserController = observer( () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>( null );
@@ -23,7 +24,7 @@ const UserController = observer( () => {
     return (
         <>
             <Button onClick={handleClick}>
-                <Typography fontSize="20px" marginX={2}>{userToken.getToken()}</Typography>
+                <Typography fontSize="20px" marginX={2}>{ userData.user?.name || userToken.getToken()}</Typography>
                 { open ? <BiUpArrowAlt size={28} /> : <BiDownArrowAlt size={28} />}
             </Button>
 
