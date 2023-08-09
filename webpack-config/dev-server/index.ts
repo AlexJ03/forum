@@ -1,7 +1,8 @@
-import {Configuration as DevServerConfiguration} from "webpack-dev-server";
+import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
 
 export const devServer: DevServerConfiguration = {
     port: 8000,
     open: true,
-    hot: true
+    hot: true,
+    historyApiFallback: true,
 };

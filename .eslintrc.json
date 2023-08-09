@@ -23,7 +23,8 @@
         "react/react-in-jsx-scope": "off",
         "semi-spacing": ["error", {"before": false, "after": true}],
         "space-in-parens": ["error", "always"],
-        "@typescript-eslint/consistent-type-imports": ["error", {"prefer": "type-imports"}]
+        "@typescript-eslint/consistent-type-imports": ["error", {"prefer": "type-imports"}],
+        "object-curly-spacing": ["error", "always"]
     },
     "settings": {
         "react": {
