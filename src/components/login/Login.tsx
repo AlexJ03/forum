@@ -2,6 +2,7 @@ import { useState } from "react";
 import type { IUserAuthData } from "../../types/users";
 import { observer } from "mobx-react-lite";
 import { userAuth } from "../../mobx/userAuth";
+import { Box, Button, TextField } from "@mui/material";
 
 const Login = observer( () => {
     const [userData, setUserData] = useState<IUserAuthData>( {
@@ -18,12 +19,12 @@ const Login = observer( () => {
     };
 
     return (
-        <div>
-            <input value={userData.email} onChange={e => setUserData( { ...userData, email: e.target.value } )} type="text" placeholder="email"/>
-            <input value={userData.password} onChange={e => setUserData( { ...userData, password: e.target.value } )} type="text" placeholder="password"/>
+        <Box display="flex" flexDirection="column" rowGap={2}>
+            <TextField label="Введите email" multiline value={userData.email} onChange={e => setUserData( { ...userData, email: e.target.value } )} type="text"/>
+            <TextField label="Введите пароль" multiline value={userData.password} onChange={e => setUserData( { ...userData, password: e.target.value } )} type="text"/>
 
-            <button onClick={login}>Login user</button>
-        </div>
+            <Button variant="contained" onClick={login}>Войти</Button>
+        </Box>
     );
 } );
 

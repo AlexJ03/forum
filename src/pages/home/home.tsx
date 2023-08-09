@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { userAuth } from "../../mobx/userAuth";
 import { userToken } from "../../helpers/auth";
+import { Button } from "@mui/material";
 
 const Home = observer( () => {
 
@@ -9,7 +10,7 @@ const Home = observer( () => {
             <h1>Home</h1>
             <p>{ userToken.getToken() }</p>
 
-            <button onClick={() => userAuth.signOut()}>logout</button>
+            <Button onClick={() => userAuth.signOut()}>logout</Button>
         </div>
     );
 } );
