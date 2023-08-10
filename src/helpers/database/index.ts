@@ -1,4 +1,4 @@
-import { doc, setDoc, getDoc, getDocs, collection } from "firebase/firestore";
+import { doc, setDoc, getDoc, getDocs, collection, arrayUnion, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
 class Database {
@@ -55,6 +55,36 @@ class Database {
         } );
 
         return categories;
+    }
+
+    async createDiscussion( categoryName: string, question: string ) {
+        try {
+            const data: any = { name: question, category: categoryName };
+
+            await setDoc( doc( db, "discussions", question ), data );
+
+        } catch ( e ) {
+            console.error( "Error adding document: ", e );
+        }
+    }
+
+    async createDiscussionInCategories( categoryName: string, question: string ) {
+        const categoryRef = doc( db, "categories", categoryName );
+        await updateDoc( categoryRef, {
+            discussions: arrayUnion( question )
+        } );
+    }
+
+    async getDiscussions() {
+        const discussions: any[] = [];
+
+        const querySnapshot = await getDocs( collection( db, "discussions" ) );
+
+        querySnapshot.forEach( ( doc ) => {
+            discussions.push( doc.data() );
+        } );
+
+        return discussions;
     }
 }
 

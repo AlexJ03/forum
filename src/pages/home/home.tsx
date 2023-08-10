@@ -8,6 +8,7 @@ import { userData } from "../../mobx/userData";
 import CategoryController from "../../components/categoryController/CategoryController";
 import { categories } from "../../mobx/categories";
 import CategoriesMap from "../../components/categoriesMap/CategoriesMap";
+import { discussions } from "../../mobx/discussions";
 
 const Home = observer( () => {
 
@@ -18,6 +19,8 @@ const Home = observer( () => {
             database.getUserData( userToken.getToken() ).then( data => userData.setUser( data ) );
 
             database.getCategories().then( data => categories.setCategories( data ) );
+
+            database.getDiscussions().then( data => discussions.setDiscussions( data ) );
         }
     }, [userToken.getToken()] );
 
