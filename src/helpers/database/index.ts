@@ -1,5 +1,6 @@
-import { doc, setDoc, getDoc, getDocs, collection, arrayUnion, updateDoc } from "firebase/firestore";
+import { doc, setDoc, getDoc, getDocs, collection, arrayUnion, updateDoc, serverTimestamp  } from "firebase/firestore";
 import { db } from "../../firebase";
+import type { IQuestion } from "../../types/questions";
 
 class Database {
     async addUser( token: string ) {
@@ -57,9 +58,9 @@ class Database {
         return categories;
     }
 
-    async createDiscussion( categoryName: string, question: string ) {
+    async createDiscussion( categoryName: string, question: string, userToken: string ) {
         try {
-            const data: any = { name: question, category: categoryName };
+            const data: IQuestion = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };
 
             await setDoc( doc( db, "discussions", question ), data );
 
