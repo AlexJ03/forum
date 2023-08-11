@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { database } from "../../helpers/database";
+import database from "../../helpers/database";
 import ProfileDiscussionsMap from "../../components/profile/ProfileDiscussionsMap";
 import ProfileAnswersMap from "../../components/profile/ProfileAnswersMap";
 
@@ -12,7 +12,7 @@ const Profile = () => {
 
     useEffect( () => {
         if ( token ) {
-            database.getFullUserData( token ).then( data => setUserData( data ) );
+            database.users.getFullUserData( token ).then( data => setUserData( data ) );
         }
     }, [token] );
 

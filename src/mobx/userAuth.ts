@@ -4,7 +4,7 @@ import { auth } from "../firebase";
 import { userToken } from "../helpers/auth";
 import type { NavigateFunction } from "react-router-dom";
 import type { IUserAuthData } from "../types/users";
-import { database } from "../helpers/database";
+import database from "../helpers/database";
 
 class UserAuth {
     constructor() {
@@ -37,7 +37,7 @@ class UserAuth {
                 const { uid } = userCredential.user;
 
                 userToken.setToken( uid );
-                database.addUser( uid );
+                database.users.addUser( uid );
             } )
             .catch( error => console.log( error ) );
     }

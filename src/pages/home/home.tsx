@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import { Box, Container } from "@mui/material";
 import Nav from "../../components/nav/Nav";
 import { useEffect } from "react";
-import { database } from "../../helpers/database";
 import { userToken } from "../../helpers/auth";
 import { userData } from "../../mobx/userData";
 import CategoryController from "../../components/categoryController/CategoryController";
@@ -10,6 +9,7 @@ import { categories } from "../../mobx/categories";
 import CategoriesMap from "../../components/categoriesMap/CategoriesMap";
 import { discussions } from "../../mobx/discussions";
 import { answers } from "../../mobx/answers";
+import database from "../../helpers/database";
 
 const Home = observer( () => {
 
@@ -17,13 +17,13 @@ const Home = observer( () => {
         const token = userToken.getToken();
 
         if ( token ) {
-            database.getUserData( userToken.getToken() ).then( data => userData.setUser( data ) );
+            database.users.getUserData( userToken.getToken() ).then( data => userData.setUser( data ) );
 
-            database.getCategories().then( data => categories.setCategories( data ) );
+            database.categories.getCategories().then( data => categories.setCategories( data ) );
 
-            database.getDiscussions().then( data => discussions.setDiscussions( data ) );
+            database.discussions.getDiscussions().then( data => discussions.setDiscussions( data ) );
 
-            database.getAnswers().then( data => answers.setAnswers( data ) );
+            database.answers.getAnswers().then( data => answers.setAnswers( data ) );
         }
     }, [userToken.getToken()] );
 

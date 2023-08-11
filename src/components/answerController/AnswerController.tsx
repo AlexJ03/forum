@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import { database } from "../../helpers/database";
+import database from "../../helpers/database";
 import { userToken } from "../../helpers/auth";
 
 const AnswerController = ( { name }: any ) => {
@@ -10,8 +10,8 @@ const AnswerController = ( { name }: any ) => {
         <>
             <TextField value={answer} onChange={e => setAnswer( e.target.value )} type="text" placeholder="Введите свой ответ" />
             <Button onClick={() => {
-                database.createAnswerInDiscussion( name, answer );
-                database.createAnswer( answer, name, userToken.getToken() );
+                database.answers.createAnswerInDiscussion( name, answer );
+                database.answers.createAnswer( answer, name, userToken.getToken() );
             }}>Ок</Button>
         </>
     );

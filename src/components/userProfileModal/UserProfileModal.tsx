@@ -3,7 +3,7 @@ import { userProfileModal } from "../../mobx/userProfileModal";
 import { observer } from "mobx-react-lite";
 import { userToken } from "../../helpers/auth";
 import { useState } from "react";
-import { database } from "../../helpers/database";
+import database from "../../helpers/database";
 import { userData } from "../../mobx/userData";
 
 const UserProfileModal = observer( () => {
@@ -38,7 +38,7 @@ const UserProfileModal = observer( () => {
                     <TextField type="text" label="ID" defaultValue={ userToken.getToken() } disabled />
 
                     <Button variant="contained" onClick={() => {
-                        database.createUserName( userToken.getToken(), name ).then( () => location.reload() );
+                        database.users.createUserName( userToken.getToken(), name ).then( () => location.reload() );
                     }}>Сохранить</Button>
                 </Box>
             </Box>

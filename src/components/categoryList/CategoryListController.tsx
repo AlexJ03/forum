@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import { database } from "../../helpers/database";
+import database from "../../helpers/database";
 import { userToken } from "../../helpers/auth";
 
 const CategoryListController = ( { name }: any ) => {
@@ -10,8 +10,8 @@ const CategoryListController = ( { name }: any ) => {
         <>
             <TextField value={discussion} onChange={e => setDiscussion( e.target.value )} type="text" placeholder="Сформулируйте вопрос" />
             <Button onClick={() => {
-                database.createDiscussionInCategories( name, discussion );
-                database.createDiscussion( name, discussion, userToken.getToken() );
+                database.discussions.createDiscussionInCategories( name, discussion );
+                database.discussions.createDiscussion( name, discussion, userToken.getToken() );
             }}>Создать обсуждение</Button>
         </>
     );
