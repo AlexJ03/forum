@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 import QuestionCard from "../../components/questionCard/QuestionCard";
-import { discussions } from "../../mobx/discussions";
 import type { IQuestion } from "../../types/questions";
 import AnswerController from "../../components/answerController/AnswerController";
-import { answers } from "../../mobx/answers";
+import mobx from "../../mobx";
 import type { IAnswer } from "../../types/answers";
 import AnswersMap from "../../components/answersMap/AnswersMap";
 import { useEffect, useState } from "react";
@@ -17,13 +16,13 @@ export const Discussion = () => {
 
     useEffect( () => {
         if ( name ) {
-            if ( discussions.getDiscussions() ) {
-                const data: IQuestion = discussions.getDiscussions().find( ( item: IQuestion ) => item.name === name );
+            if ( mobx.discussions.getDiscussions() ) {
+                const data: IQuestion = mobx.discussions.getDiscussions().find( ( item: IQuestion ) => item.name === name );
                 setQuestion( data );
             }
 
-            if ( answers.getAnswers() ) {
-                const answersData: IAnswer[] = answers.getAnswers().filter( ( item: IAnswer ) => item?.discussion === name );
+            if ( mobx.answers.getAnswers() ) {
+                const answersData: IAnswer[] = mobx.answers.getAnswers().filter( ( item: IAnswer ) => item?.discussion === name );
                 setUsersAnswers( answersData );
             }
         }

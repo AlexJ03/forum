@@ -1,9 +1,9 @@
 import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { discussions } from "../../mobx/discussions";
+import mobx from "../../mobx";
 
 const CategoryListMap = ( { name }: any ) => {
-    const questions = discussions.getDiscussions() && discussions.getDiscussions().filter( ( item: any ) => item?.category === name );
+    const questions = mobx.discussions.getDiscussions() && mobx.discussions.getDiscussions().filter( ( item: any ) => item?.category === name );
     const navigate = useNavigate();
 
     return (

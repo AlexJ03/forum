@@ -1,9 +1,8 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
-import { userProfileModal } from "../../mobx/modals/profile";
+import mobx from "../../mobx";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import database from "../../helpers/database";
-import { userData } from "../../mobx/user/data";
 import { token } from "../../helpers/localStorage/token";
 
 const UserProfileModal = observer( () => {
@@ -23,8 +22,8 @@ const UserProfileModal = observer( () => {
 
     return (
         <Modal
-            open={userProfileModal.show}
-            onClose={() => userProfileModal.close()}
+            open={mobx.userProfileModal.show}
+            onClose={() => mobx.userProfileModal.close()}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
@@ -34,7 +33,7 @@ const UserProfileModal = observer( () => {
                 </Typography>
 
                 <Box display="flex" flexDirection="column" rowGap={3}>
-                    <TextField onChange={e => setName( e.target.value )} type="text" placeholder={ userData.user?.name || "Придумайте имя" }  />
+                    <TextField onChange={e => setName( e.target.value )} type="text" placeholder={ mobx.userData.user?.name || "Придумайте имя" }  />
                     <TextField type="text" label="ID" defaultValue={ token.getToken() } disabled />
 
                     <Button variant="contained" onClick={() => {

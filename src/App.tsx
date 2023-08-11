@@ -1,13 +1,13 @@
+import mobx from "./mobx";
 import { Home, Profile, Discussion, CategoryList, Auth } from "./pages";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { userAuth } from "./mobx/user/auth";
 
 const App = () => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        userAuth.checkUser( navigate );
+        mobx.userAuth.checkUser( navigate );
     }, [] );
 
   return (

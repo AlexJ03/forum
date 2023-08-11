@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { IUserAuthData } from "../../types/users";
 import { observer } from "mobx-react-lite";
-import { userAuth } from "../../mobx/user/auth";
+import mobx from "../../mobx";
 import { Box, Button, TextField } from "@mui/material";
 
 const Login = observer( () => {
@@ -14,7 +14,7 @@ const Login = observer( () => {
         const { email, password } = userData;
 
         if ( email && password ) {
-            await userAuth.loginUser( userData );
+            await mobx.userAuth.loginUser( userData );
         }
     };
 
