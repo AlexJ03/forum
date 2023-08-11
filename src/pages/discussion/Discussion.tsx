@@ -7,21 +7,37 @@ import AnswerController from "../../components/answerController/AnswerController
 import { answers } from "../../mobx/answers";
 import type { IAnswer } from "../../types/answers";
 import AnswersMap from "../../components/answersMap/AnswersMap";
+import { useEffect, useState } from "react";
 
 const Discussion = () => {
     const { name } = useParams();
-    const data: IQuestion = name && discussions.getDiscussions() && discussions.getDiscussions().find( ( item: IQuestion ) => item?.name === name );
-    const answersData: IAnswer[] = name && answers.getAnswers() && answers.getAnswers().filter( ( item: IAnswer ) => item?.discussion === name );
+
+    const [question, setQuestion] = useState<IQuestion | null>( null );
+    const [usersAnswers, setUsersAnswers] = useState<IAnswer[] | null>( null );
+
+    useEffect( () => {
+        if ( name ) {
+            if ( discussions.getDiscussions() ) {
+                const data: IQuestion = discussions.getDiscussions().find( ( item: IQuestion ) => item.name === name );
+                setQuestion( data );
+            }
+
+            if ( answers.getAnswers() ) {
+                const answersData: IAnswer[] = answers.getAnswers().filter( ( item: IAnswer ) => item?.discussion === name );
+                setUsersAnswers( answersData );
+            }
+        }
+    } , [name] );
 
     return (
         <Box pt={5}>
             <Container maxWidth="lg">
-                { data?.name && <QuestionCard name={data.name} date={data.date} fromUser={data.fromUser}
-                               category={data.category}/> }
+                { question && <QuestionCard name={question.name} date={question.date} fromUser={question.fromUser}
+                               category={question.category}/> }
 
                 <Box>
-                    <AnswerController name={data.name} />
-                    <AnswersMap answers={answersData} />
+                    { question && <AnswerController name={question.name}/>}
+                    { usersAnswers && <AnswersMap answers={usersAnswers} />}
                 </Box>
             </Container>
         </Box>
