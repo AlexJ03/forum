@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import CategoryListController from "../../components/categoryList/CategoryListController";
 import CategoryListMap from "../../components/categoryList/CategoryListMap";
 
-const CategoryList = () => {
+export const CategoryList = () => {
     const { name } = useParams();
 
     return (
@@ -13,5 +13,3 @@ const CategoryList = () => {
         </div>
     );
 };
-
-export default CategoryList;

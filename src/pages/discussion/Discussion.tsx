@@ -9,7 +9,7 @@ import type { IAnswer } from "../../types/answers";
 import AnswersMap from "../../components/answersMap/AnswersMap";
 import { useEffect, useState } from "react";
 
-const Discussion = () => {
+export const Discussion = () => {
     const { name } = useParams();
 
     const [question, setQuestion] = useState<IQuestion | null>( null );
@@ -43,5 +43,3 @@ const Discussion = () => {
         </Box>
     );
 };
-
-export default Discussion;

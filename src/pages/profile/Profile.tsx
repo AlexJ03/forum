@@ -5,7 +5,7 @@ import database from "../../helpers/database";
 import ProfileDiscussionsMap from "../../components/profile/ProfileDiscussionsMap";
 import ProfileAnswersMap from "../../components/profile/ProfileAnswersMap";
 
-const Profile = () => {
+export const Profile = () => {
     const { token } = useParams();
 
     const [userData, setUserData] = useState<any>( null );
@@ -35,5 +35,3 @@ const Profile = () => {
         </Box>
     );
 };
-
-export default Profile;

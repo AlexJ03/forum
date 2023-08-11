@@ -11,7 +11,7 @@ import { answers } from "../../mobx/answers";
 import database from "../../helpers/database";
 import { token as UserToken } from "../../helpers/localStorage/token";
 
-const Home = observer( () => {
+export const Home = observer( () => {
 
     useEffect( () => {
         const token = UserToken.getToken();
@@ -41,5 +41,3 @@ const Home = observer( () => {
         </Container>
     );
 } );
-
-export default Home;

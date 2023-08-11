@@ -3,7 +3,7 @@ import Login from "../../components/login/Login";
 import { useState } from "react";
 import { Box, Button, Container } from "@mui/material";
 
-const Auth = () => {
+export const Auth = () => {
     const [isLogin, setIsLogin] = useState( false );
 
     return (
@@ -24,5 +24,3 @@ const Auth = () => {
         </Box>
     );
 };
-
-export default Auth;
