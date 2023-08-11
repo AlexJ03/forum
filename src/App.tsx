@@ -5,6 +5,7 @@ import { userAuth } from "./mobx/userAuth";
 import { useEffect } from "react";
 import CategoryList from "./pages/category/categoryList";
 import Discussion from "./pages/discussion/Discussion";
+import Profile from "./pages/profile/profile";
 
 const App = () => {
     const navigate = useNavigate();
@@ -17,6 +18,7 @@ const App = () => {
     <Routes>
         <Route path="/" element={<Auth />} />
         <Route path="/homepage" element={<Home />} />
+        <Route path="/profile/:token" element={<Profile />} />
         <Route path="/categories/:name" element={<CategoryList />} />
         <Route path="/discussions/:name" element={<Discussion />} />
     </Routes>

@@ -2,6 +2,7 @@ import { doc, setDoc, getDoc, getDocs, collection, arrayUnion, updateDoc  } from
 import { db } from "../../firebase";
 import type { IQuestion } from "../../types/questions";
 import type { IAnswer } from "../../types/answers";
+import { IUser } from "../../types/users";
 
 class Database {
     async addUser( token: string ) {
@@ -117,6 +118,28 @@ class Database {
         } );
 
         return answers;
+    }
+
+    async getUserDiscussions( token: string ) {
+        const discussions: any[] = await this.getDiscussions();
+        const result = discussions.filter( ( item: any ) => item?.fromUser === token );
+
+        return result;
+    }
+
+    async getUserAnswers( token: string ) {
+        const answers: any[] = await this.getAnswers();
+        const result = answers.filter( ( item: any ) => item?.fromUser === token );
+
+        return result;
+    }
+
+    async getFullUserData( token: string ) {
+        const user = await this.getUserData( token );
+        const discussions = await this.getUserDiscussions( token );
+        const answers = await this.getUserAnswers( token );
+
+        return { user, discussions, answers };
     }
 }
 

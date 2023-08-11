@@ -7,9 +7,11 @@ import { userProfileModal } from "../../mobx/userProfileModal";
 import UserProfileModal from "../userProfileModal/UserProfileModal";
 import { userToken } from "../../helpers/auth";
 import { userData } from "../../mobx/userData";
+import { useNavigate } from "react-router-dom";
 
 const UserController = observer( () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>( null );
+    const navigate = useNavigate();
 
     const open = Boolean( anchorEl );
 
@@ -37,7 +39,8 @@ const UserController = observer( () => {
                     "aria-labelledby": "basic-button",
                 }}
             >
-                <MenuItem onClick={() => userProfileModal.open()}>Профиль</MenuItem>
+                <MenuItem onClick={() => navigate( `/profile/${userToken.getToken()}` )}>Профиль</MenuItem>
+                <MenuItem onClick={() => userProfileModal.open()}>Изменить данные</MenuItem>
                 <MenuItem onClick={() => userAuth.signOut()}>Выйти</MenuItem>
             </Menu>
 
