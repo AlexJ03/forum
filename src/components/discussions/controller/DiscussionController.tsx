@@ -1,9 +1,9 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import database from "../../helpers/database";
-import { token } from "../../helpers/localStorage/token";
+import database from "../../../helpers/database";
+import { token } from "../../../helpers/localStorage/token";
 
-const CategoryListController = ( { name }: any ) => {
+const DiscussionController = ( { name }: any ) => {
     const [discussion, setDiscussion] = useState( "" );
 
     return (
@@ -17,4 +17,4 @@ const CategoryListController = ( { name }: any ) => {
     );
 };
 
-export default CategoryListController;
+export default DiscussionController;

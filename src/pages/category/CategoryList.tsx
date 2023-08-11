@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
-import CategoryListController from "../../components/categoryList/CategoryListController";
-import CategoryListMap from "../../components/categoryList/CategoryListMap";
+import DiscussionController from "../../components/discussions/controller/DiscussionController";
+import DiscussionsMap from "../../components/discussions/map/DiscussionsMap";
 
 export const CategoryList = () => {
     const { name } = useParams();
+    console.log( name, "Yes" );
 
     return (
         <div>
             <h1>{name}</h1>
-            <CategoryListController name={name} />
-            <CategoryListMap name={name} />
+            <DiscussionController name={name} />
+            <DiscussionsMap name={name} />
         </div>
     );
 };

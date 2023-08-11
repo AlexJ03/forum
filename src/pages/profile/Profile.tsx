@@ -2,8 +2,8 @@ import { Box, Container, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import database from "../../helpers/database";
-import ProfileDiscussionsMap from "../../components/profile/ProfileDiscussionsMap";
-import ProfileAnswersMap from "../../components/profile/ProfileAnswersMap";
+import ProfileDiscussionsMap from "../../components/profile/map/ProfileDiscussionsMap";
+import ProfileAnswersMap from "../../components/profile/map/ProfileAnswersMap";
 
 export const Profile = () => {
     const { token } = useParams();

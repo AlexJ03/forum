@@ -1,5 +1,5 @@
 import { Box, List, ListItemButton, ListItemText } from "@mui/material";
-import mobx from "../../mobx";
+import mobx from "../../../mobx";
 import { useNavigate } from "react-router-dom";
 
 const CategoriesMap = () => {

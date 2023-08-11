@@ -3,8 +3,8 @@ import { Box, Container } from "@mui/material";
 import Nav from "../../components/nav/Nav";
 import { useEffect } from "react";
 import mobx from "../../mobx";
-import CategoryController from "../../components/categoryController/CategoryController";
-import CategoriesMap from "../../components/categoriesMap/CategoriesMap";
+import CategoryController from "../../components/categories/controller/CategoryController";
+import CategoriesMap from "../../components/categories/map/CategoriesMap";
 import database from "../../helpers/database";
 import { token as UserToken } from "../../helpers/localStorage/token";
 

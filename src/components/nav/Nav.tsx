@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import UserController from "../userController/UserController";
+import NavController from "./controller/NavController";
 import { observer } from "mobx-react-lite";
 
 const Nav = observer( () => {
@@ -9,7 +9,7 @@ const Nav = observer( () => {
             <h1>My Forum</h1>
 
             <Box display="flex">
-                <UserController />
+                <NavController />
             </Box>
         </Box>
     );

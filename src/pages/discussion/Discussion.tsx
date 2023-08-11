@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { Box, Container } from "@mui/material";
-import QuestionCard from "../../components/questionCard/QuestionCard";
+import QuestionCard from "../../components/questions/card/QuestionCard";
 import type { IQuestion } from "../../types/questions";
-import AnswerController from "../../components/answerController/AnswerController";
+import AnswerController from "../../components/answers/controller/AnswerController";
 import mobx from "../../mobx";
 import type { IAnswer } from "../../types/answers";
-import AnswersMap from "../../components/answersMap/AnswersMap";
+import AnswersMap from "../../components/answers/map/AnswersMap";
 import { useEffect, useState } from "react";
 
 export const Discussion = () => {
@@ -32,7 +32,7 @@ export const Discussion = () => {
         <Box pt={5}>
             <Container maxWidth="lg">
                 { question && <QuestionCard name={question.name} date={question.date} fromUser={question.fromUser}
-                               category={question.category}/> }
+                                            category={question.category}/> }
 
                 <Box>
                     { question && <AnswerController name={question.name}/>}

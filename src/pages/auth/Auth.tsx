@@ -1,5 +1,5 @@
-import Register from "../../components/register/Register";
-import Login from "../../components/login/Login";
+import Register from "../../components/auth/register/Register";
+import Login from "../../components/auth/login/Login";
 import { useState } from "react";
 import { Box, Button, Container } from "@mui/material";
 
