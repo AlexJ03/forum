@@ -9,6 +9,7 @@ import CategoryController from "../../components/categoryController/CategoryCont
 import { categories } from "../../mobx/categories";
 import CategoriesMap from "../../components/categoriesMap/CategoriesMap";
 import { discussions } from "../../mobx/discussions";
+import { answers } from "../../mobx/answers";
 
 const Home = observer( () => {
 
@@ -21,6 +22,8 @@ const Home = observer( () => {
             database.getCategories().then( data => categories.setCategories( data ) );
 
             database.getDiscussions().then( data => discussions.setDiscussions( data ) );
+
+            database.getAnswers().then( data => answers.setAnswers( data ) );
         }
     }, [userToken.getToken()] );
 

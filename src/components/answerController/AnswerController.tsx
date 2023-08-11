@@ -1,0 +1,20 @@
+import { Button, TextField } from "@mui/material";
+import { useState } from "react";
+import { database } from "../../helpers/database";
+import { userToken } from "../../helpers/auth";
+
+const AnswerController = ( { name }: any ) => {
+    const [answer, setAnswer] = useState( "" );
+
+    return (
+        <>
+            <TextField value={answer} onChange={e => setAnswer( e.target.value )} type="text" placeholder="Введите свой ответ" />
+            <Button onClick={() => {
+                database.createAnswerInDiscussion( name, answer );
+                database.createAnswer( answer, name, userToken.getToken() );
+            }}>Ок</Button>
+        </>
+    );
+};
+
+export default AnswerController;

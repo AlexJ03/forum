@@ -1,6 +1,7 @@
-import { doc, setDoc, getDoc, getDocs, collection, arrayUnion, updateDoc, serverTimestamp  } from "firebase/firestore";
+import { doc, setDoc, getDoc, getDocs, collection, arrayUnion, updateDoc  } from "firebase/firestore";
 import { db } from "../../firebase";
 import type { IQuestion } from "../../types/questions";
+import type { IAnswer } from "../../types/answers";
 
 class Database {
     async addUser( token: string ) {
@@ -86,6 +87,36 @@ class Database {
         } );
 
         return discussions;
+    }
+
+    async createAnswerInDiscussion( discussionName: string, answer: string ) {
+        const categoryRef = doc( db, "discussions", discussionName );
+        await updateDoc( categoryRef, {
+            answers: arrayUnion( answer )
+        } );
+    }
+
+    async createAnswer( answer: string, discussionName: string, userToken: string ) {
+        try {
+            const data: IAnswer = { date: JSON.stringify( new Date ), name: answer, fromUser: userToken, discussion: discussionName };
+
+            await setDoc( doc( db, "answers", answer ), data );
+
+        } catch ( e ) {
+            console.error( "Error adding document: ", e );
+        }
+    }
+
+    async getAnswers() {
+        const answers: any[] = [];
+
+        const querySnapshot = await getDocs( collection( db, "answers" ) );
+
+        querySnapshot.forEach( ( doc ) => {
+            answers.push( doc.data() );
+        } );
+
+        return answers;
     }
 }
 
