@@ -1,9 +1,9 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
-import { userProfileModal } from "../../mobx/userProfileModal";
+import { userProfileModal } from "../../mobx/modals/profile";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import database from "../../helpers/database";
-import { userData } from "../../mobx/userData";
+import { userData } from "../../mobx/user/data";
 import { token } from "../../helpers/localStorage/token";
 
 const UserProfileModal = observer( () => {

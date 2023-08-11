@@ -2,7 +2,7 @@ import type { IQuestion } from "../../types/questions";
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 
-export class Discussions {
+class Discussions {
     async createDiscussion( categoryName: string, question: string, userToken: string ) {
         try {
             const data: IQuestion = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };

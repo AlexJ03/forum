@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class UserData {
+class Data {
     user: any;
     
     constructor() {
@@ -10,7 +10,6 @@ class UserData {
     setUser( data: any ) {
         this.user = data;
     }
-
 }
 
-export const userData = new UserData();
+export const userData = new Data();

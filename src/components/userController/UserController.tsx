@@ -2,10 +2,10 @@ import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
-import { userAuth } from "../../mobx/userAuth";
-import { userProfileModal } from "../../mobx/userProfileModal";
+import { userAuth } from "../../mobx/user/auth";
+import { userProfileModal } from "../../mobx/modals/profile";
 import UserProfileModal from "../userProfileModal/UserProfileModal";
-import { userData } from "../../mobx/userData";
+import { userData } from "../../mobx/user/data";
 import { useNavigate } from "react-router-dom";
 import { token } from "../../helpers/localStorage/token";
 

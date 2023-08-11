@@ -1,12 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../../firebase";
 import type { NavigateFunction } from "react-router-dom";
-import type { IUserAuthData } from "../types/users";
-import database from "../helpers/database";
-import { token } from "../helpers/localStorage/token";
+import type { IUserAuthData } from "../../types/users";
+import database from "../../helpers/database";
+import { token } from "../../helpers/localStorage/token";
 
-class UserAuth {
+class Auth {
     constructor() {
         makeAutoObservable( this );
     }
@@ -54,4 +54,4 @@ class UserAuth {
     }
 }
 
-export const userAuth = new UserAuth();
+export const userAuth = new Auth();

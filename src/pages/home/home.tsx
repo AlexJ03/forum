@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { Box, Container } from "@mui/material";
 import Nav from "../../components/nav/Nav";
 import { useEffect } from "react";
-import { userData } from "../../mobx/userData";
+import { userData } from "../../mobx/user/data";
 import CategoryController from "../../components/categoryController/CategoryController";
 import { categories } from "../../mobx/categories";
 import CategoriesMap from "../../components/categoriesMap/CategoriesMap";

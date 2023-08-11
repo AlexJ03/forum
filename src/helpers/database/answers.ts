@@ -2,7 +2,7 @@ import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebas
 import { db } from "../../firebase";
 import type { IAnswer } from "../../types/answers";
 
-export class Answers {
+class Answers {
     async createAnswerInDiscussion( discussionName: string, answer: string ) {
         const categoryRef = doc( db, "discussions", discussionName );
         await updateDoc( categoryRef, {

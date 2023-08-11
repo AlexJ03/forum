@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class UserProfileModal {
+class Profile {
     show: boolean = false;
 
     constructor() {
@@ -16,4 +16,4 @@ class UserProfileModal {
     }
 }
 
-export const userProfileModal = new UserProfileModal();
+export const userProfileModal = new Profile();

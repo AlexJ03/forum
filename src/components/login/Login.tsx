@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { IUserAuthData } from "../../types/users";
 import { observer } from "mobx-react-lite";
-import { userAuth } from "../../mobx/userAuth";
+import { userAuth } from "../../mobx/user/auth";
 import { Box, Button, TextField } from "@mui/material";
 
 const Login = observer( () => {
