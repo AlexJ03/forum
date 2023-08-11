@@ -1,7 +1,9 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { database } from "../../helpers/database";
+import ProfileDiscussionsMap from "../../components/profile/ProfileDiscussionsMap";
+import ProfileAnswersMap from "../../components/profile/ProfileAnswersMap";
 
 const Profile = () => {
     const { token } = useParams();
@@ -17,14 +19,16 @@ const Profile = () => {
     return (
         <Box>
             <Container maxWidth="lg">
-                <h1>User Profile</h1>
-
                 {userData && (
                     <>
-                        <p>{ userData?.user?.name }</p>
-                        <p>{ userData?.user.token }</p>
-                        <p>{ JSON.stringify( userData?.discussions ) }</p>
-                        <p>{ JSON.stringify( userData?.answers ) }</p>
+                        <Typography variant="h3">{ userData?.user?.name }</Typography>
+                        <Typography mb={3} variant="subtitle1">{ userData?.user.token }</Typography>
+
+                        <h1>Обсуждения:</h1>
+                        { userData?.discussions && <ProfileDiscussionsMap answers={userData?.discussions} />}
+
+                        <h1>Ответы:</h1>
+                        { userData?.answers && <ProfileAnswersMap answers={userData?.answers} />}
                     </>
                 )}
             </Container>
