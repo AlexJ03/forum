@@ -5,9 +5,9 @@ import { useState } from "react";
 import { userAuth } from "../../mobx/userAuth";
 import { userProfileModal } from "../../mobx/userProfileModal";
 import UserProfileModal from "../userProfileModal/UserProfileModal";
-import { userToken } from "../../helpers/auth";
 import { userData } from "../../mobx/userData";
 import { useNavigate } from "react-router-dom";
+import { token } from "../../helpers/localStorage/token";
 
 const UserController = observer( () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>( null );
@@ -26,7 +26,7 @@ const UserController = observer( () => {
     return (
         <>
             <Button onClick={handleClick}>
-                <Typography fontSize="20px" marginX={2}>{ userData.user?.name || userToken.getToken()}</Typography>
+                <Typography fontSize="20px" marginX={2}>{ userData.user?.name || token.getToken()}</Typography>
                 { open ? <BiUpArrowAlt size={28} /> : <BiDownArrowAlt size={28} />}
             </Button>
 
@@ -39,7 +39,7 @@ const UserController = observer( () => {
                     "aria-labelledby": "basic-button",
                 }}
             >
-                <MenuItem onClick={() => navigate( `/profile/${userToken.getToken()}` )}>Профиль</MenuItem>
+                <MenuItem onClick={() => navigate( `/profile/${token.getToken()}` )}>Профиль</MenuItem>
                 <MenuItem onClick={() => userProfileModal.open()}>Изменить данные</MenuItem>
                 <MenuItem onClick={() => userAuth.signOut()}>Выйти</MenuItem>
             </Menu>

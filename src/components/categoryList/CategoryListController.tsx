@@ -1,7 +1,7 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import database from "../../helpers/database";
-import { userToken } from "../../helpers/auth";
+import { token } from "../../helpers/localStorage/token";
 
 const CategoryListController = ( { name }: any ) => {
     const [discussion, setDiscussion] = useState( "" );
@@ -11,7 +11,7 @@ const CategoryListController = ( { name }: any ) => {
             <TextField value={discussion} onChange={e => setDiscussion( e.target.value )} type="text" placeholder="Сформулируйте вопрос" />
             <Button onClick={() => {
                 database.discussions.createDiscussionInCategories( name, discussion );
-                database.discussions.createDiscussion( name, discussion, userToken.getToken() );
+                database.discussions.createDiscussion( name, discussion, token.getToken() );
             }}>Создать обсуждение</Button>
         </>
     );

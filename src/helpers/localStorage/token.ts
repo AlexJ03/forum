@@ -1,4 +1,4 @@
-class UserToken {
+class Token {
     setToken( token: string ) {
         localStorage.setItem( "token", token );
     }
@@ -12,4 +12,4 @@ class UserToken {
     }
 }
 
-export const userToken = new UserToken();
+export const token = new Token();

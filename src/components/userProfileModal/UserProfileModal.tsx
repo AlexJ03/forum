@@ -1,10 +1,10 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
 import { userProfileModal } from "../../mobx/userProfileModal";
 import { observer } from "mobx-react-lite";
-import { userToken } from "../../helpers/auth";
 import { useState } from "react";
 import database from "../../helpers/database";
 import { userData } from "../../mobx/userData";
+import { token } from "../../helpers/localStorage/token";
 
 const UserProfileModal = observer( () => {
     const [name, setName] = useState( "" );
@@ -35,10 +35,10 @@ const UserProfileModal = observer( () => {
 
                 <Box display="flex" flexDirection="column" rowGap={3}>
                     <TextField onChange={e => setName( e.target.value )} type="text" placeholder={ userData.user?.name || "Придумайте имя" }  />
-                    <TextField type="text" label="ID" defaultValue={ userToken.getToken() } disabled />
+                    <TextField type="text" label="ID" defaultValue={ token.getToken() } disabled />
 
                     <Button variant="contained" onClick={() => {
-                        database.users.createUserName( userToken.getToken(), name ).then( () => location.reload() );
+                        database.users.createUserName( token.getToken(), name ).then( () => location.reload() );
                     }}>Сохранить</Button>
                 </Box>
             </Box>
