@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import type { IQuestion } from "../../../types/questions";
 import type { FC } from "react";
-import { formatDate, parseDate } from "../../../utils/date";
+import { formatDate, parseDate } from "@utils";
 import { useNavigate } from "react-router-dom";
 
 const QuestionCard: FC<IQuestion> = ( { name, date, fromUser, category } ) => {

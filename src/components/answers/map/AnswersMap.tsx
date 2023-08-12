@@ -1,8 +1,8 @@
+import type { FC } from "react";
+import { formatDate, parseDate } from "@utils";
 import { Box, List, ListItem, ListItemButton, Typography } from "@mui/material";
 import type { IAnswer } from "../../../types/answers";
-import type { FC } from "react";
 import type { IAnswers } from "../../../types/answers";
-import { formatDate, parseDate } from "../../../utils/date";
 
 const AnswersMap: FC<IAnswers> = ( { answers } ) => {
 

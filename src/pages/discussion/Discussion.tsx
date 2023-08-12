@@ -1,11 +1,10 @@
 import { useParams } from "react-router-dom";
 import { Box, Container } from "@mui/material";
-import QuestionCard from "../../components/questions/card/QuestionCard";
+import { QuestionCard } from "@components-questions";
+import { AnswerController, AnswersMap } from "@components-answers";
 import type { IQuestion } from "../../types/questions";
-import AnswerController from "../../components/answers/controller/AnswerController";
-import mobx from "../../mobx";
+import mobx from "@mobx";
 import type { IAnswer } from "../../types/answers";
-import AnswersMap from "../../components/answers/map/AnswersMap";
 import { useEffect, useState } from "react";
 
 export const Discussion = () => {

@@ -1,6 +1,6 @@
 import type { IQuestion } from "../../types/questions";
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "@firebase-config";
 
 class Discussions {
     async createDiscussion( categoryName: string, question: string, userToken: string ) {

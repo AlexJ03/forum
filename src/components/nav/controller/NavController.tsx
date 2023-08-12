@@ -2,10 +2,10 @@ import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
-import mobx from "../../../mobx";
+import mobx from "@mobx";
 import ModalProfile from "../../modals/profile/ModalProfile";
 import { useNavigate } from "react-router-dom";
-import { token } from "../../../helpers/localStorage/token";
+import { token } from "@helpers";
 
 const NavController = observer( () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>( null );

@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
-import DiscussionController from "../../components/discussions/controller/DiscussionController";
-import DiscussionsMap from "../../components/discussions/map/DiscussionsMap";
+import { DiscussionController, DiscussionsMap } from "@components-discussions";
 
 export const CategoryList = () => {
     const { name } = useParams();

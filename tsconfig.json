@@ -9,6 +9,26 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "moduleResolution": "node",
-    "useDefineForClassFields": true
+    "useDefineForClassFields": true,
+    "paths": {
+      // Alias
+      "@helpers": ["./src/helpers"],
+      "@mobx": ["./src/mobx"],
+      "@firebase-config": ["./src/firebase"],
+      "@utils": ["./src/utils"],
+
+      // Components Alias
+      "@components-discussions": ["./src/components/discussions"],
+      "@components-categories": ["./src/components/categories"],
+      "@components-auth": ["./src/components/auth"],
+      "@components-answers": ["./src/components/answers"],
+      "@components-modals": ["./src/components/modals"],
+      "@components-nav": ["./src/components/nav"],
+      "@components-profile": ["./src/components/profile"],
+      "@components-questions": ["./src/components/questions"],
+
+      // Global Css Alias
+      "@global-css": ["./styles/global.css"]
+    }
   }
 }

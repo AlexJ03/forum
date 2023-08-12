@@ -1,5 +1,5 @@
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "@firebase-config";
 import { discussions as discussions_db } from "./discussions";
 import { answers as answers_db } from "./answers";
 

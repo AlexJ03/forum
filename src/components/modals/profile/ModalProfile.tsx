@@ -1,9 +1,8 @@
 import { Box, Button, Modal, TextField, Typography } from "@mui/material";
-import mobx from "../../../mobx";
+import mobx from "@mobx";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
-import database from "../../../helpers/database";
-import { token } from "../../../helpers/localStorage/token";
+import { database, token } from "@helpers";
 
 const ModalProfile = observer( () => {
     const [name, setName] = useState( "" );

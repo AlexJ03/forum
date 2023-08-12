@@ -1,12 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { Box, Container } from "@mui/material";
-import Nav from "../../components/nav/Nav";
+import { Nav } from "@components-nav";
 import { useEffect } from "react";
-import mobx from "../../mobx";
-import CategoryController from "../../components/categories/controller/CategoryController";
-import CategoriesMap from "../../components/categories/map/CategoriesMap";
-import database from "../../helpers/database";
-import { token as UserToken } from "../../helpers/localStorage/token";
+import mobx from "@mobx";
+import { CategoryController, CategoriesMap } from "@components-categories";
+import { database, token as UserToken } from "@helpers";
 
 export const Home = observer( () => {
 

@@ -1,7 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import database from "../../../helpers/database";
-import { token } from "../../../helpers/localStorage/token";
+import { database, token } from "@helpers";
 
 const DiscussionController = ( { name }: any ) => {
     const [discussion, setDiscussion] = useState( "" );

@@ -1,6 +1,6 @@
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
-import database from "../../../helpers/database";
+import { database } from "@helpers";
 
 const CategoryController = () => {
     const [category, setCategory] = useState( "" );

@@ -1,5 +1,5 @@
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
-import { db } from "../../firebase";
+import { db } from "@firebase-config";
 
 class Categories {
     async createCategory( category: string ) {
