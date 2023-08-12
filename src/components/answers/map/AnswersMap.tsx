@@ -1,7 +1,7 @@
 import type { FC } from "react";
 import { formatDate, parseDate } from "@utils";
 import { Box, List, ListItem, ListItemButton, Typography } from "@mui/material";
-import type { IAnswer, IAnswers } from "../../../types/entities/answers";
+import type { IAnswer, IAnswers } from "../../../types/database/entities/answers";
 
 const AnswersMap: FC<IAnswers> = ( { answers } ) => {
 

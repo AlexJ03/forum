@@ -1,4 +1,4 @@
 export interface IUserData {
-    name: string | undefined;
+    name?: string;
     token: string;
 }

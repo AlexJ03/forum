@@ -2,11 +2,13 @@ import { doc, getDoc, setDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
 import { discussions as discussions_db } from "./discussions";
 import { answers as answers_db } from "./answers";
+import type { IUserData } from "../../types/database/user";
+import { type WithFieldValue } from "@firebase/firestore";
 
 class Users {
     async addUser( token: string ) {
         try {
-            const data: unknown = { token };
+            const data: WithFieldValue<IUserData> = { token };
 
             await setDoc( doc( db, "users", token ), data );
 
@@ -28,7 +30,7 @@ class Users {
 
     async createUserName( token: string, name: string ) {
         try {
-            const data: unknown = { token, name };
+            const data: WithFieldValue<IUserData> = { token, name };
 
             await setDoc( doc( db, "users", token ), data );
         } catch ( e ) {

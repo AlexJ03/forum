@@ -2,7 +2,7 @@ import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import mobx from "@mobx";
 import { Box, Button, TextField } from "@mui/material";
-import type { IUserAuthData } from "../../../types/user";
+import type { IUserAuthData } from "../../../types/auth";
 
 const Register = observer( () => {
     const [userData, setUserData] = useState<IUserAuthData>( {

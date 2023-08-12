@@ -1,11 +1,12 @@
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
-import type { IDiscussion } from "../../types/entities/discussions";
+import type { IDiscussion } from "../../types/database/entities/discussions";
+import { type WithFieldValue } from "@firebase/firestore";
 
 class Discussions {
     async createDiscussion( categoryName: string, question: string, userToken: string ) {
         try {
-            const data: IDiscussion = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };
+            const data: WithFieldValue<IDiscussion> = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };
 
             await setDoc( doc( db, "discussions", question ), data );
 
@@ -22,20 +23,20 @@ class Discussions {
     }
 
     async getDiscussions() {
-        const discussions: any[] = [];
+        const discussions: IDiscussion[] = [];
 
         const querySnapshot = await getDocs( collection( db, "discussions" ) );
 
         querySnapshot.forEach( ( doc ) => {
-            discussions.push( doc.data() );
+            discussions.push( <IDiscussion>doc.data() );
         } );
 
         return discussions;
     }
 
     async getUserDiscussions( token: string ) {
-        const discussions: any[] = await this.getDiscussions();
-        const result = discussions.filter( ( item: any ) => item?.fromUser === token );
+        const discussions: IDiscussion[] = await this.getDiscussions();
+        const result = discussions.filter( ( item: IDiscussion ) => item.fromUser === token );
 
         return result;
     }

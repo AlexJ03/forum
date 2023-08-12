@@ -1,6 +1,7 @@
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
-import type { IAnswer } from "../../types/entities/answers";
+import type { IAnswer } from "../../types/database/entities/answers";
+import { type WithFieldValue } from "@firebase/firestore";
 
 class Answers {
     async createAnswerInDiscussion( discussionName: string, answer: string ) {
@@ -12,9 +13,15 @@ class Answers {
 
     async createAnswer( answer: string, discussionName: string, userToken: string ) {
         try {
-            const data: IAnswer = { date: JSON.stringify( new Date ), name: answer, fromUser: userToken, discussion: discussionName };
+            const data: WithFieldValue<IAnswer> = {
+                date: JSON.stringify( new Date ),
+                name: answer,
+                fromUser: userToken,
+                discussion: discussionName
+            };
 
-            await setDoc( doc( db, "answers", answer ), data );
+            const ref = doc( db, "answers", answer );
+            await setDoc( ref, data );
 
         } catch ( e ) {
             console.error( "Error adding document: ", e );
@@ -22,20 +29,20 @@ class Answers {
     }
 
     async getAnswers() {
-        const answers: any[] = [];
+        const answers: IAnswer[] = [];
 
         const querySnapshot = await getDocs( collection( db, "answers" ) );
 
         querySnapshot.forEach( ( doc ) => {
-            answers.push( doc.data() );
+            answers.push( <IAnswer>doc.data() );
         } );
 
         return answers;
     }
 
     async getUserAnswers( token: string ) {
-        const answers: any[] = await this.getAnswers();
-        const result = answers.filter( ( item: any ) => item?.fromUser === token );
+        const answers: IAnswer[] = await this.getAnswers();
+        const result = answers.filter( ( item: IAnswer ) => item.fromUser === token );
 
         return result;
     }
