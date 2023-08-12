@@ -4,8 +4,7 @@ import { QuestionCard } from "@components-questions";
 import { AnswerController, AnswersMap } from "@components-answers";
 import mobx from "@mobx";
 import { useEffect, useState } from "react";
-import type { IDiscussion } from "../../types/database/entities/discussions";
-import type { IAnswer } from "../../types/database/entities/answers";
+import type { IDiscussion, IAnswer } from "@types";
 
 export const Discussion = () => {
     const { name } = useParams();

@@ -10,6 +10,7 @@ export const alias_helpers = path.resolve( __dirname, "src", "helpers" );
 export const alias_mobx = path.resolve( __dirname, "src", "mobx" );
 export const alias_firebase = path.resolve( __dirname, "src", "firebase" );
 export const alias_utils = path.resolve( __dirname, "src", "utils" );
+export const alias_types = path.resolve( __dirname, "src", "types" );
 
 // Components Alias
 export const alias_components_discussions = path.resolve( __dirname, "src", "components", "discussions" );

@@ -16,6 +16,7 @@
       "@mobx": ["./src/mobx"],
       "@firebase-config": ["./src/firebase"],
       "@utils": ["./src/utils"],
+      "@types": ["./src/types"],
 
       // Components Alias
       "@components-discussions": ["./src/components/discussions"],

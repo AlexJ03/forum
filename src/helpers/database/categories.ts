@@ -1,7 +1,7 @@
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
 import { type WithFieldValue } from "@firebase/firestore";
-import type { ICategory } from "../../types/database/entities/categories";
+import type { ICategory } from "@types";
 
 class Categories {
     async createCategory( category: string ) {

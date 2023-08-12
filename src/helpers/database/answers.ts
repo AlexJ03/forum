@@ -1,6 +1,6 @@
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
-import type { IAnswer } from "../../types/database/entities/answers";
+import type { IAnswer } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
 
 class Answers {

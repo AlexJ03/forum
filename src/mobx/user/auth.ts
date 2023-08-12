@@ -3,7 +3,7 @@ import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndP
 import { auth } from "@firebase-config";
 import type { NavigateFunction } from "react-router-dom";
 import { token, database } from "@helpers";
-import type { IUserAuthData } from "../../types/auth";
+import type { IUserAuthData } from "@types";
 
 class Auth {
     constructor() {

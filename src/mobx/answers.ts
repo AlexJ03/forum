@@ -1,5 +1,5 @@
 import { makeAutoObservable, toJS } from "mobx";
-import type { IAnswer } from "../types/database/entities/answers";
+import type { IAnswer } from "@types";
 
 class Answers {
     answers: IAnswer[];

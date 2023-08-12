@@ -9,7 +9,7 @@ import {
     alias_components_questions,
     alias_firebase, alias_global_css,
     alias_helpers,
-    alias_mobx,
+    alias_mobx, alias_types,
     alias_utils
 } from "../../../webpack.paths";
 
@@ -20,6 +20,7 @@ export const resolve = {
         "@mobx": alias_mobx,
         "@firebase-config": alias_firebase,
         "@utils": alias_utils,
+        "@types": alias_types,
 
         // Components Alias
         "@components-discussions": alias_components_discussions,
