@@ -1,9 +1,8 @@
 import { Box, List, ListItem, ListItemButton, Typography } from "@mui/material";
-import type { IAnswer } from "../../../types/answers";
 import { formatDate, parseDate } from "@utils";
 import type { FC } from "react";
-import type { IAnswers } from "../../../types/answers";
 import { useNavigate } from "react-router-dom";
+import type { IAnswer, IAnswers } from "../../../types/entities/answers";
 
 const ProfileAnswersMap: FC<IAnswers> = ( { answers } ) => {
     const navigate = useNavigate();

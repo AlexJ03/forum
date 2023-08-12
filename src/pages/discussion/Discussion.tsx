@@ -2,21 +2,21 @@ import { useParams } from "react-router-dom";
 import { Box, Container } from "@mui/material";
 import { QuestionCard } from "@components-questions";
 import { AnswerController, AnswersMap } from "@components-answers";
-import type { IQuestion } from "../../types/questions";
 import mobx from "@mobx";
-import type { IAnswer } from "../../types/answers";
 import { useEffect, useState } from "react";
+import type { IDiscussion } from "../../types/entities/discussions";
+import type { IAnswer } from "../../types/entities/answers";
 
 export const Discussion = () => {
     const { name } = useParams();
 
-    const [question, setQuestion] = useState<IQuestion | null>( null );
+    const [question, setQuestion] = useState<IDiscussion | null>( null );
     const [usersAnswers, setUsersAnswers] = useState<IAnswer[] | null>( null );
 
     useEffect( () => {
         if ( name ) {
             if ( mobx.discussions.getDiscussions() ) {
-                const data: IQuestion = mobx.discussions.getDiscussions().find( ( item: IQuestion ) => item.name === name );
+                const data: IDiscussion = mobx.discussions.getDiscussions().find( ( item: IDiscussion ) => item.name === name );
                 setQuestion( data );
             }
 

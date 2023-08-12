@@ -1,4 +1,4 @@
-export interface IQuestion {
+export interface IDiscussion {
     category: string;
     fromUser: string;
     name: string;

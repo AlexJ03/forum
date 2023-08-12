@@ -1,10 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import type { IQuestion } from "../../../types/questions";
 import type { FC } from "react";
 import { formatDate, parseDate } from "@utils";
 import { useNavigate } from "react-router-dom";
+import type { IDiscussion } from "../../../types/entities/discussions";
 
-const QuestionCard: FC<IQuestion> = ( { name, date, fromUser, category } ) => {
+const QuestionCard: FC<IDiscussion> = ( { name, date, fromUser, category } ) => {
     const navigate = useNavigate();
 
     return (

@@ -1,6 +1,6 @@
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
-import type { IAnswer } from "../../types/answers";
+import type { IAnswer } from "../../types/entities/answers";
 
 class Answers {
     async createAnswerInDiscussion( discussionName: string, answer: string ) {

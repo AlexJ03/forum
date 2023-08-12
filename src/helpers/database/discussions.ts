@@ -1,11 +1,11 @@
-import type { IQuestion } from "../../types/questions";
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
+import type { IDiscussion } from "../../types/entities/discussions";
 
 class Discussions {
     async createDiscussion( categoryName: string, question: string, userToken: string ) {
         try {
-            const data: IQuestion = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };
+            const data: IDiscussion = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };
 
             await setDoc( doc( db, "discussions", question ), data );
 
