@@ -1,31 +1,30 @@
 import { useState } from "react";
-import { observer } from "mobx-react-lite";
-import mobx from "@mobx";
 import { Box, Button, TextField } from "@mui/material";
 import type { IUserAuthData } from "@types";
+import { userAuth } from "@helpers";
 
-const Register = observer( () => {
+const Register = () => {
     const [userData, setUserData] = useState<IUserAuthData>( {
         email: "",
         password: ""
     } );
 
     const createUser = async () => {
-        const { email, password } = userData;
-
-        if ( email && password ) {
-            await mobx.userAuth.createUser( userData );
+        try {
+            await userAuth.createUser( userData );
+        } catch ( error ) {
+            console.error( error.message );
         }
     };
 
     return (
             <Box display="flex" flexDirection="column" rowGap={2}>
-                <TextField label="Введите email" placeholder="example@mail.ru" multiline value={userData.email} onChange={( e ) => setUserData( { ...userData, email: e.target.value } )} type="text"/>
-                <TextField label="Введите пароль" placeholder="qwerty123456" multiline value={userData.password} onChange={( e ) => setUserData( { ...userData, password: e.target.value } )} type="password"/>
+                <TextField type="email" label="Введите email" placeholder="example@mail.ru" value={userData.email} onChange={( e ) => setUserData( { ...userData, email: e.target.value } )} />
+                <TextField type="password" label="Введите пароль" placeholder="qwerty123456" value={userData.password} onChange={( e ) => setUserData( { ...userData, password: e.target.value } )} />
 
                 <Button onClick={createUser} variant="contained">Зарегистрироваться</Button>
             </Box>
     );
-} );
+};
 
 export default Register;

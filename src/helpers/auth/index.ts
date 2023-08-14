@@ -2,10 +2,10 @@ import { makeAutoObservable } from "mobx";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "@firebase-config";
 import type { NavigateFunction } from "react-router-dom";
-import { token, database } from "@helpers";
+import { token, database, fireError } from "@helpers";
 import type { IUserAuthData } from "@types";
 
-class Auth {
+class UserAuth {
     constructor() {
         makeAutoObservable( this );
     }
@@ -13,9 +13,7 @@ class Auth {
     async signOut() {
         signOut( auth ).then( () => {
             token.removeToken();
-        } ).catch( ( error ) => {
-            console.log( error.message );
-        } );
+        } ).catch( ( error ) => fireError.setError( error.message ) );
     }
 
     checkUser( navigate: NavigateFunction ) {
@@ -38,7 +36,7 @@ class Auth {
                 token.setToken( uid );
                 database.users.addUser( uid );
             } )
-            .catch( error => console.log( error ) );
+            .catch( error => fireError.setError( error.message ) );
     }
 
     async loginUser( userData: IUserAuthData ) {
@@ -49,8 +47,8 @@ class Auth {
                 const { uid } = userCredential.user;
                 token.setToken( uid );
             } )
-            .catch( error => console.log( error.message ) );
+            .catch( error => fireError.setError( error.message ) );
     }
 }
 
-export const userAuth = new Auth();
+export const userAuth = new UserAuth();

@@ -1,5 +1,5 @@
 import { makeAutoObservable, toJS } from "mobx";
-import type { IUserData, IUserFullData } from "@types";
+import type { IUserData } from "@types";
 
 class Data {
     data: IUserData;

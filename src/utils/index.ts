@@ -1,3 +1,4 @@
 import { formatDate, parseDate } from "./date";
+import { firebaseErrors } from "./errors";
 
-export { formatDate, parseDate };
+export { formatDate, parseDate, firebaseErrors };

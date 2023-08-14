@@ -25,7 +25,7 @@ class Users {
         if ( docSnap.exists() ) {
             return docSnap.data();
         } else {
-            console.log( "Document is not defined..." );
+            console.error( "Document is not defined..." );
         }
     }
 

@@ -1,31 +1,30 @@
 import { useState } from "react";
-import { observer } from "mobx-react-lite";
-import mobx from "@mobx";
 import { Box, Button, TextField } from "@mui/material";
 import type { IUserAuthData } from "@types";
+import { userAuth } from "@helpers";
 
-const Login = observer( () => {
+const Login = () => {
     const [userData, setUserData] = useState<IUserAuthData>( {
         email: "",
         password: ""
     } );
 
     const login = async () => {
-        const { email, password } = userData;
-
-        if ( email && password ) {
-            await mobx.userAuth.loginUser( userData );
+        try {
+            await userAuth.loginUser( userData );
+        } catch ( error ) {
+            console.error( error );
         }
     };
 
     return (
         <Box display="flex" flexDirection="column" rowGap={2}>
-            <TextField label="Введите email" multiline value={userData.email} onChange={e => setUserData( { ...userData, email: e.target.value } )} type="text"/>
-            <TextField label="Введите пароль" multiline value={userData.password} onChange={e => setUserData( { ...userData, password: e.target.value } )} type="text"/>
+            <TextField label="Введите email" value={userData.email} onChange={e => setUserData( { ...userData, email: e.target.value } )} type="email"/>
+            <TextField label="Введите пароль" value={userData.password} onChange={e => setUserData( { ...userData, password: e.target.value } )} type="password"/>
 
             <Button variant="contained" onClick={login}>Войти</Button>
         </Box>
     );
-} );
+};
 
 export default Login;

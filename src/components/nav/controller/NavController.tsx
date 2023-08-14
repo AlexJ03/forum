@@ -5,7 +5,7 @@ import { useState } from "react";
 import mobx from "@mobx";
 import { ModalProfile } from "@components-modals";
 import { useNavigate } from "react-router-dom";
-import { token } from "@helpers";
+import { token, userAuth } from "@helpers";
 
 const NavController = observer( () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>( null );
@@ -39,7 +39,7 @@ const NavController = observer( () => {
             >
                 <MenuItem onClick={() => navigate( `/profile/${token.getToken()}` )}>Профиль</MenuItem>
                 <MenuItem onClick={() => mobx.userProfileModal.open()}>Изменить данные</MenuItem>
-                <MenuItem onClick={() => mobx.userAuth.signOut()}>Выйти</MenuItem>
+                <MenuItem onClick={() => userAuth.signOut()}>Выйти</MenuItem>
             </Menu>
 
             <ModalProfile />
