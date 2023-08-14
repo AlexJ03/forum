@@ -5,7 +5,7 @@ import { useEffect } from "react";
 import mobx from "@mobx";
 import { CategoryController, CategoriesMap } from "@components-categories";
 import { database, token as UserToken } from "@helpers";
-import type { IUserData, IUserFullData } from "@types";
+import type { IUserData } from "@types";
 
 export const Home = observer( () => {
 
