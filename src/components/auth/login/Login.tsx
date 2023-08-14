@@ -10,11 +10,7 @@ const Login = () => {
     } );
 
     const login = async () => {
-        try {
-            await userAuth.loginUser( userData );
-        } catch ( error ) {
-            console.error( error );
-        }
+        await userAuth.loginUser( userData );
     };
 
     return (

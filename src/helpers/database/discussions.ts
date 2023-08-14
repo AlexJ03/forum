@@ -2,24 +2,27 @@ import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebas
 import { db } from "@firebase-config";
 import type { IDiscussion } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
+import { fireError } from "@helpers";
 
 class Discussions {
     async createDiscussion( categoryName: string, question: string, userToken: string ) {
         try {
             const data: WithFieldValue<IDiscussion> = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };
-
-            await setDoc( doc( db, "discussions", question ), data );
-
-        } catch ( e ) {
-            console.error( "Error adding document: ", e );
+            await setDoc( doc( db, "discussions", question ), data ).catch( error => fireError.setError( error.message ) );
+        } catch ( error ) {
+            fireError.setError( error.message );
         }
     }
 
     async createDiscussionInCategories( categoryName: string, question: string ) {
-        const categoryRef = doc( db, "categories", categoryName );
-        await updateDoc( categoryRef, {
-            discussions: arrayUnion( question )
-        } );
+        try {
+            const categoryRef = doc( db, "categories", categoryName );
+            await updateDoc( categoryRef, {
+                discussions: arrayUnion( question )
+            } );
+        } catch ( error ) {
+            fireError.setError( error.message );
+        }
     }
 
     async getDiscussions() {

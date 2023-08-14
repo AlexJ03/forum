@@ -11,7 +11,7 @@ class FirebaseError {
             throw new Error( this.message );
         }
 
-        throw new Error( message );
+        throw new Error( "Ошибка..." );
     }
 }
 

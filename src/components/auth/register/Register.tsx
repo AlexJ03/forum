@@ -10,11 +10,7 @@ const Register = () => {
     } );
 
     const createUser = async () => {
-        try {
-            await userAuth.createUser( userData );
-        } catch ( error ) {
-            console.error( error.message );
-        }
+        await userAuth.createUser( userData );
     };
 
     return (

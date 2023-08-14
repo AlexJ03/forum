@@ -2,13 +2,18 @@ import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebas
 import { db } from "@firebase-config";
 import type { IAnswer } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
+import { fireError } from "@helpers";
 
 class Answers {
     async createAnswerInDiscussion( discussionName: string, answer: string ) {
-        const categoryRef = doc( db, "discussions", discussionName );
-        await updateDoc( categoryRef, {
-            answers: arrayUnion( answer )
-        } );
+        try {
+            const categoryRef = doc( db, "discussions", discussionName );
+            await updateDoc( categoryRef, {
+                answers: arrayUnion( answer )
+            } );
+        } catch ( error ) {
+            fireError.setError( error.message );
+        }
     }
 
     async createAnswer( answer: string, discussionName: string, userToken: string ) {
@@ -23,8 +28,8 @@ class Answers {
             const ref = doc( db, "answers", answer );
             await setDoc( ref, data );
 
-        } catch ( e ) {
-            console.error( "Error adding document: ", e );
+        } catch ( error ) {
+            fireError.setError( error.message );
         }
     }
 
