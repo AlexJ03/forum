@@ -1,14 +1,19 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, toJS } from "mobx";
+import type { IUserData, IUserFullData } from "@types";
 
 class Data {
-    user: any;
+    data: IUserData;
     
     constructor() {
         makeAutoObservable( this );
     }
 
-    setUser( data: any ) {
-        this.user = data;
+    setUser( data: IUserData ) {
+        this.data = toJS( data );
+    }
+
+    getUser(): IUserData {
+        return toJS( this.data );
     }
 }
 

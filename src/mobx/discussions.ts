@@ -1,17 +1,18 @@
 import { makeAutoObservable, toJS } from "mobx";
+import type { IDiscussion } from "@types";
 
 class Discussions {
-    discussions: any;
+    discussions: IDiscussion[];
 
     constructor() {
         makeAutoObservable( this );
     }
 
-    setDiscussions( discussions: any ) {
+    setDiscussions( discussions: IDiscussion[] ) {
         this.discussions = discussions;
     }
 
-    getDiscussions() {
+    getDiscussions(): IDiscussion[] {
         return toJS( this.discussions );
     }
 }

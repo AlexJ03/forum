@@ -3,4 +3,5 @@ export interface IDiscussion {
     fromUser: string;
     name: string;
     date: string;
+    answers?: string[];
 }

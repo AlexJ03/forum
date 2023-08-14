@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import mobx from "@mobx";
 import { CategoryController, CategoriesMap } from "@components-categories";
 import { database, token as UserToken } from "@helpers";
+import type { IUserData, IUserFullData } from "@types";
 
 export const Home = observer( () => {
 
@@ -12,7 +13,7 @@ export const Home = observer( () => {
         const token = UserToken.getToken();
 
         if ( token ) {
-            database.users.getUserData( UserToken.getToken() ).then( data => mobx.userData.setUser( data ) );
+            database.users.getUserData( UserToken.getToken() ).then( ( data: IUserData ) => mobx.userData.setUser( data ) );
 
             database.categories.getCategories().then( data => mobx.categories.setCategories( data ) );
 

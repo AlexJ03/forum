@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { database, token } from "@helpers";
 
-const DiscussionController = ( { name }: any ) => {
+const DiscussionController = ( { name }: Record<string, string> ) => {
     const [discussion, setDiscussion] = useState( "" );
 
     return (

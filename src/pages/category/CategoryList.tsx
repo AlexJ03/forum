@@ -3,7 +3,6 @@ import { DiscussionController, DiscussionsMap } from "@components-discussions";
 
 export const CategoryList = () => {
     const { name } = useParams();
-    console.log( name, "Yes" );
 
     return (
         <div>

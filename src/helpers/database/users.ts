@@ -4,6 +4,7 @@ import { discussions as discussions_db } from "./discussions";
 import { answers as answers_db } from "./answers";
 import type { IUserData } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
+import type { IUserFullData } from "../../types/entities/user";
 
 class Users {
     async addUser( token: string ) {

@@ -4,7 +4,3 @@ export interface IAnswer {
     date: string;
     discussion: string;
 }
-
-export interface IAnswers {
-    answers: IAnswer[];
-}

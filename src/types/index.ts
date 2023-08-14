@@ -1,4 +1,5 @@
 import { IUserAuthData } from "./auth";
-import { IAnswer, IAnswers, IDiscussion, ICategory, IUserData } from "./database";
+import { IAnswer, IDiscussion, ICategory, IUserData } from "./database";
+import { IAnswers, IUserFullData, IDiscussions } from "./entities";
 
-export { IUserAuthData, IAnswer, IUserData, IDiscussion, IAnswers, ICategory };
+export { IUserAuthData, IAnswer, IUserData, IDiscussion, ICategory, IAnswers, IUserFullData, IDiscussions };

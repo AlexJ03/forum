@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Box, Container } from "@mui/material";
-import { QuestionCard } from "@components-questions";
 import { AnswerController, AnswersMap } from "@components-answers";
+import { QuestionCard } from "@components-questions";
 import mobx from "@mobx";
 import { useEffect, useState } from "react";
 import type { IDiscussion, IAnswer } from "@types";
@@ -9,13 +9,14 @@ import type { IDiscussion, IAnswer } from "@types";
 export const Discussion = () => {
     const { name } = useParams();
 
-    const [question, setQuestion] = useState<IDiscussion | null>( null );
+    const [question, setQuestion] = useState<IDiscussion>( null );
     const [usersAnswers, setUsersAnswers] = useState<IAnswer[] | null>( null );
 
     useEffect( () => {
         if ( name ) {
             if ( mobx.discussions.getDiscussions() ) {
-                const data: IDiscussion = mobx.discussions.getDiscussions().find( ( item: IDiscussion ) => item.name === name );
+                const discussions: IDiscussion[] = mobx.discussions.getDiscussions();
+                const data: IDiscussion = discussions && discussions.find( ( item: IDiscussion ) => item.name === name );
                 setQuestion( data );
             }
 
@@ -29,11 +30,10 @@ export const Discussion = () => {
     return (
         <Box pt={5}>
             <Container maxWidth="lg">
-                { question && <QuestionCard name={question.name} date={question.date} fromUser={question.fromUser}
-                                            category={question.category}/> }
+                { question && <QuestionCard name={question.name} date={question.date} fromUser={question.fromUser} category={question.category} /> }
 
                 <Box>
-                    { question && <AnswerController name={question.name}/>}
+                    { question && <AnswerController name={question?.name}/>}
                     { usersAnswers && <AnswersMap answers={usersAnswers} />}
                 </Box>
             </Container>

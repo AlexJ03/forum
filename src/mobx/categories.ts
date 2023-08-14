@@ -1,13 +1,14 @@
 import { makeAutoObservable, toJS } from "mobx";
+import type { ICategory } from "@types";
 
 class Categories {
-    categories: any;
+    categories: ICategory[];
 
     constructor() {
         makeAutoObservable( this );
     }
 
-    setCategories( categories: any ) {
+    setCategories( categories: ICategory[] ) {
         this.categories = categories;
     }
 

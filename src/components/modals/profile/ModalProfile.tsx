@@ -32,7 +32,7 @@ const ModalProfile = observer( () => {
                 </Typography>
 
                 <Box display="flex" flexDirection="column" rowGap={3}>
-                    <TextField onChange={e => setName( e.target.value )} type="text" placeholder={ mobx.userData.user?.name || "Придумайте имя" }  />
+                    <TextField onChange={e => setName( e.target.value )} type="text" placeholder={ mobx.userData.data?.name || "Придумайте имя" }  />
                     <TextField type="text" label="ID" defaultValue={ token.getToken() } disabled />
 
                     <Button variant="contained" onClick={() => {

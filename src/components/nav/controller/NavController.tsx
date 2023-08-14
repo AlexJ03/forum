@@ -3,7 +3,7 @@ import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import mobx from "@mobx";
-import ModalProfile from "../../modals/profile/ModalProfile";
+import { ModalProfile } from "@components-modals";
 import { useNavigate } from "react-router-dom";
 import { token } from "@helpers";
 
@@ -24,7 +24,7 @@ const NavController = observer( () => {
     return (
         <>
             <Button onClick={handleClick}>
-                <Typography fontSize="20px" marginX={2}>{ mobx.userData.user?.name || token.getToken()}</Typography>
+                <Typography fontSize="20px" marginX={2}>{ mobx.userData.getUser()?.name || token.getToken()}</Typography>
                 { open ? <BiUpArrowAlt size={28} /> : <BiDownArrowAlt size={28} />}
             </Button>
 

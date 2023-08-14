@@ -1,8 +1,8 @@
 import { Button, TextField } from "@mui/material";
-import { useState } from "react";
+import { FC, useState } from "react";
 import { token, database } from "@helpers";
 
-const AnswerController = ( { name }: any ) => {
+const AnswerController = ( { name }: Record<string, string> ) => {
     const [answer, setAnswer] = useState( "" );
 
     return (
