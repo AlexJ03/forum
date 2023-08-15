@@ -15,10 +15,10 @@ const Register = () => {
 
     return (
             <Box display="flex" flexDirection="column" rowGap={2}>
-                <TextField type="email" label="Введите email" placeholder="example@mail.ru" value={userData.email} onChange={( e ) => setUserData( { ...userData, email: e.target.value } )} />
-                <TextField type="password" label="Введите пароль" placeholder="qwerty123456" value={userData.password} onChange={( e ) => setUserData( { ...userData, password: e.target.value } )} />
+                <TextField fullWidth color="primary" type="email" label="Введите email" placeholder="example@mail.ru" value={userData.email} onChange={( e ) => setUserData( { ...userData, email: e.target.value } )} />
+                <TextField fullWidth color="primary" type="password" label="Введите пароль" placeholder="qwerty123456" value={userData.password} onChange={( e ) => setUserData( { ...userData, password: e.target.value } )} />
 
-                <Button onClick={createUser} variant="contained">Зарегистрироваться</Button>
+                <Button color="info" onClick={createUser} variant="contained">Зарегистрироваться</Button>
             </Box>
     );
 };

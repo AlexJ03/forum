@@ -4,7 +4,7 @@ import { blueGrey } from "@mui/material/colors";
 export const theme = createTheme( {
     palette: {
         background: {
-            default: blueGrey.A700
+            default: blueGrey.A700,
         }
     },
 } );

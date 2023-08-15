@@ -15,8 +15,8 @@ const Login = () => {
 
     return (
         <Box display="flex" flexDirection="column" rowGap={2}>
-            <TextField label="Введите email" value={userData.email} onChange={e => setUserData( { ...userData, email: e.target.value } )} type="email"/>
-            <TextField label="Введите пароль" value={userData.password} onChange={e => setUserData( { ...userData, password: e.target.value } )} type="password"/>
+            <TextField fullWidth color="primary" label="Введите email" value={userData.email} onChange={e => setUserData( { ...userData, email: e.target.value } )} type="email"/>
+            <TextField fullWidth color="primary" label="Введите пароль" value={userData.password} onChange={e => setUserData( { ...userData, password: e.target.value } )} type="password"/>
 
             <Button variant="contained" onClick={login}>Войти</Button>
         </Box>
