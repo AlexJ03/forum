@@ -3,6 +3,7 @@ import type { IUserData } from "@types";
 
 class Data {
     data: IUserData;
+    users: IUserData[];
     
     constructor() {
         makeAutoObservable( this );
@@ -14,6 +15,14 @@ class Data {
 
     getUser(): IUserData {
         return toJS( this.data );
+    }
+
+    setUsers( data: IUserData[] ) {
+        this.users = data;
+    }
+
+    getUsers() {
+        return toJS( this.users );
     }
 }
 

@@ -1,20 +1,15 @@
-import { Box, List, ListItemButton, ListItemText } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import mobx from "@mobx";
-import { useNavigate } from "react-router-dom";
 import type { ICategory } from "@types";
+import { CategoryCard } from "@components-categories";
 
 const CategoriesMap = () => {
-    const navigate = useNavigate();
 
     return (
         <Box sx={{ width: "100%" }}>
-            <List>
-                { mobx.categories.getCategories() && mobx.categories.getCategories().map( ( item: ICategory ) => (
-                    <ListItemButton onClick={() => navigate( `/categories/${item.name}` )} component="a" key={item?.name} sx={{ marginBottom: "20px", background: "#e3e3e3", borderRadius: 5 }}>
-                        <ListItemText sx={{ textAlign: "center" }} primary={ item?.name } />
-                    </ListItemButton>
-                ) ) }
-            </List>
+            <Grid container spacing={8}>
+                { mobx.categories.getCategories() && mobx.categories.getCategories().map( ( category: ICategory ) => <CategoryCard key={category.name} category={category} /> ) }
+            </Grid>
         </Box>
     );
 };

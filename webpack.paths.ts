@@ -21,6 +21,8 @@ export const alias_components_modals = path.resolve( __dirname, "src", "componen
 export const alias_components_nav = path.resolve( __dirname, "src", "components", "nav" );
 export const alias_components_profile = path.resolve( __dirname, "src", "components", "profile" );
 export const alias_components_questions = path.resolve( __dirname, "src", "components", "questions" );
+export const alias_components_users = path.resolve( __dirname, "src", "components", "users" );
+export const alias_components_toggle = path.resolve( __dirname, "src", "components", "toggle" );
 
 // Global Css Alias
 export const alias_global_css = path.resolve( __dirname, "styles", "global.css" );

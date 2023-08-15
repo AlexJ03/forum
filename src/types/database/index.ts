@@ -1,6 +1,6 @@
-import { IUserData } from "./user";
+import { IUserData, IUsers } from "./user";
 import { IAnswer } from "./entities/answers";
-import { ICategory } from "./entities/categories";
+import { ICategory, ICategories } from "./entities/categories";
 import { IDiscussion } from "./entities/discussions";
 
-export { IUserData, IAnswer, ICategory, IDiscussion };
+export { IUserData, IAnswer, ICategory, IDiscussion, ICategories, IUsers };

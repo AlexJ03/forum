@@ -1,10 +1,9 @@
-import { doc, getDoc, setDoc } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
 import { discussions as discussions_db } from "./discussions";
 import { answers as answers_db } from "./answers";
 import type { IUserData } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
-import type { IUserFullData } from "../../types/entities/user";
 
 class Users {
     async addUser( token: string ) {
@@ -27,6 +26,19 @@ class Users {
         } else {
             console.error( "Document is not defined..." );
         }
+    }
+
+    async getUsers() {
+        const users: WithFieldValue<IUserData[]> = [];
+
+        const usersRef = collection( db, "users" );
+        const querySnapshot = await getDocs( usersRef );
+
+        querySnapshot.forEach( ( doc ) => {
+            users.push( <IUserData>doc.data() );
+        } );
+
+        return users;
     }
 
     async createUserName( token: string, name: string ) {

@@ -6,7 +6,7 @@ import {
     alias_components_modals,
     alias_components_nav,
     alias_components_profile,
-    alias_components_questions,
+    alias_components_questions, alias_components_toggle, alias_components_users,
     alias_firebase, alias_global_css,
     alias_helpers,
     alias_mobx, alias_types,
@@ -31,6 +31,8 @@ export const resolve = {
         "@components-nav": alias_components_nav,
         "@components-profile": alias_components_profile,
         "@components-questions": alias_components_questions,
+        "@components-users": alias_components_users,
+        "@components-toggle": alias_components_toggle,
 
         // Global Css Alias
         "@global-css": alias_global_css

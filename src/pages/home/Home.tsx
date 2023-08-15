@@ -3,9 +3,10 @@ import { Box, Container } from "@mui/material";
 import { Nav } from "@components-nav";
 import { useEffect } from "react";
 import mobx from "@mobx";
-import { CategoryController, CategoriesMap } from "@components-categories";
+import { CategoriesMap } from "@components-categories";
 import { database, token as UserToken } from "@helpers";
 import type { IUserData } from "@types";
+import { UsersMap } from "@components-users";
 
 export const Home = observer( () => {
 
@@ -14,6 +15,8 @@ export const Home = observer( () => {
 
         if ( token ) {
             database.users.getUserData( UserToken.getToken() ).then( ( data: IUserData ) => mobx.userData.setUser( data ) );
+
+            database.users.getUsers().then( ( data: IUserData[] ) => mobx.userData.setUsers( data ) );
 
             database.categories.getCategories().then( data => mobx.categories.setCategories( data ) );
 
@@ -24,16 +27,16 @@ export const Home = observer( () => {
     }, [UserToken.getToken()] );
 
     return (
-        <Container maxWidth="xl" sx={{ paddingTop: "30px" }}>
+        <Container maxWidth="lg" sx={{ paddingTop: "30px" }}>
             <Nav />
 
-            <Box display="flex" justifyContent="center" mt="100px" mb="50px">
-                <CategoryController />
+            <Box>
+                { mobx.toggle.value === "Категории"
+                    ? mobx.categories.getCategories() && <CategoriesMap/>
+                    : mobx.userData.getUsers() && <UsersMap users={mobx.userData.getUsers()} />
+                }
             </Box>
 
-            <Box display="flex" justifyContent="center">
-                { mobx.categories.getCategories() && <CategoriesMap/> }
-            </Box>
         </Container>
     );
 } );

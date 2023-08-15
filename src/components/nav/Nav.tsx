@@ -1,18 +1,20 @@
-import { Box } from "@mui/material";
-import NavController from "./controller/NavController";
-import { observer } from "mobx-react-lite";
+import { Box, Typography } from "@mui/material";
+import { NavController } from "@components-nav";
+import { Toggle } from "@components-toggle";
 
-const Nav = observer( () => {
+const Nav = () => {
 
     return (
-        <Box width="100%" display="flex" justifyContent="space-between" alignItems="center">
-            <h1>My Forum</h1>
+        <Box width="100%" mb={15}>
+            <Typography mb={3} variant="h2" fontSize="30px">RuForum</Typography>
 
-            <Box display="flex">
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Toggle />
                 <NavController />
             </Box>
+
         </Box>
     );
-} );
+};
 
 export default Nav;
