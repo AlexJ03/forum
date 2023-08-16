@@ -4,20 +4,28 @@ import { Nav } from "@components-nav";
 import mobx from "@mobx";
 import { CategoriesMap } from "@components-categories";
 import { UsersMap } from "@components-users";
+import { Progress } from "../../components/progress";
 
 export const Home = observer( () => {
 
     return (
-        <Container maxWidth="lg" sx={{ paddingTop: "30px" }}>
-            <Nav />
+        <>
+            {
+                mobx.categories.getCategories() && mobx.userData.getUsers()
+                    ? (
+                        <Container maxWidth="lg" sx={{ paddingTop: "30px" }}>
+                        <Nav />
 
-            <Box>
-                { mobx.toggleHome.value === "Категории"
-                    ? mobx.categories.getCategories() && <CategoriesMap/>
-                    : mobx.userData.getUsers() && <UsersMap users={mobx.userData.getUsers()} />
-                }
-            </Box>
-
-        </Container>
+                        <Box>
+                            { mobx.toggleHome.value === "Категории"
+                                ? mobx.categories.getCategories() && <CategoriesMap/>
+                                : mobx.userData.getUsers() && <UsersMap users={mobx.userData.getUsers()} />
+                            }
+                        </Box>
+                        </Container>
+                    )
+                    : <Progress />
+            }
+        </>
     );
 } );

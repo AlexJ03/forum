@@ -5,6 +5,7 @@ import { userData } from "./user/data";
 import { userProfileModal } from "./modals/profile";
 import { toggleHome, toggleProfile, Toggle } from "./toggle";
 import { snackbar } from "./snackbar";
+import { backdrop } from "./backdrop";
 
 export { Toggle };
-export default { answers, categories, discussions, userData, userProfileModal, toggleProfile, toggleHome, snackbar };
+export default { answers, categories, discussions, userData, userProfileModal, toggleProfile, toggleHome, snackbar, backdrop };

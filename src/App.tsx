@@ -11,10 +11,6 @@ import type { IUserFullData } from "@types";
 const App = observer( () => {
     const navigate = useNavigate();
 
-    // useEffect( () => {
-    //     userAuth.checkUser( navigate );
-    // }, [] );
-
     useEffect( () => {
         const token = UserToken.getToken();
 

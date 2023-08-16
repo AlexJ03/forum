@@ -7,6 +7,7 @@ import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { database } from "@helpers";
+import { Progress } from "../../components/progress";
 
 export const Profile = observer( () => {
     const { token } = useParams();
@@ -18,27 +19,35 @@ export const Profile = observer( () => {
     const userData: IUserFullData = mobx.userData.getFullUserData() && mobx.userData.getFullUserData();
 
     return (
-        <Box pt={5}>
-            <Container maxWidth="lg">
-                {userData?.user?.token && (
-                    <>
-                        {userData.user?.name &&
-                            <Typography variant="h2" fontSize="30px" textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>
-                        }
+        <>
+            {
+                userData ? (
+                    <Box pt={5}>
+                        <Container maxWidth="lg">
+                            {userData?.user?.token && (
+                                <>
+                                    {userData.user?.name &&
+                                        <Typography variant="h2" fontSize="30px" textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>
+                                    }
 
-                        <Typography textAlign="center" mb={5} variant="h3" fontSize="25px">ID: { userData.user.token }</Typography>
+                                    <Typography textAlign="center" mb={5} variant="h3" fontSize="25px">ID: { userData.user.token }</Typography>
 
-                        <Box display="flex" justifyContent="center" mb={3}>
-                            <Toggle currentToggle={mobx.toggleProfile} data={["Вопросы", "Ответы"]} />
-                        </Box>
+                                    <Box display="flex" justifyContent="center" mb={3}>
+                                        <Toggle currentToggle={mobx.toggleProfile} data={["Вопросы", "Ответы"]} />
+                                    </Box>
 
-                        { mobx.toggleProfile.value === "Вопросы"
-                            ? <ProfileDiscussionsMap discussions={userData?.discussions} />
-                            : <ProfileAnswersMap answers={userData?.answers} />
-                        }
-                    </>
-                )}
-            </Container>
-        </Box>
+                                    { mobx.toggleProfile.value === "Вопросы"
+                                        ? <ProfileDiscussionsMap discussions={userData?.discussions} />
+                                        : <ProfileAnswersMap answers={userData?.answers} />
+                                    }
+                                </>
+                            )}
+                        </Container>
+                    </Box>
+                )
+                    : <Progress />
+            }
+
+        </>
     );
 } );

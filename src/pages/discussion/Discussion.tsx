@@ -5,6 +5,7 @@ import { QuestionCard } from "@components-questions";
 import mobx from "@mobx";
 import { filterAnswers, findCurrentDiscussion } from "../../utils/filter";
 import { observer } from "mobx-react-lite";
+import { Progress } from "../../components/progress";
 
 export const Discussion = observer( () => {
     const { name } = useParams();
@@ -13,15 +14,21 @@ export const Discussion = observer( () => {
     const answers = name && mobx.answers.getAnswers() && filterAnswers( mobx.answers.getAnswers(), name );
 
     return (
-        <Box pt={5}>
-            <Container maxWidth="lg">
-                { question && <QuestionCard name={question.name} date={question.date} fromUser={question.fromUser} category={question.category} /> }
+        <>
+            {
+                ( question && answers ) ? (
+                    <Box pt={5}>
+                        <Container maxWidth="lg">
+                            { question && <QuestionCard name={question.name} date={question.date} fromUser={question.fromUser} category={question.category} /> }
 
-                <Box>
-                    { question && <AnswerController name={question?.name}/>}
-                    { answers && <AnswersMap answers={answers} />}
-                </Box>
-            </Container>
-        </Box>
+                            <Box>
+                                { question && <AnswerController name={question?.name}/>}
+                                { answers && <AnswersMap answers={answers} />}
+                            </Box>
+                        </Container>
+                    </Box>
+                ) : <Progress />
+            }
+        </>
     );
 } );
