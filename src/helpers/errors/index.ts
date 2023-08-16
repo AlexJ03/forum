@@ -1,4 +1,5 @@
 import { firebaseErrors } from "@utils";
+import mobx from "@mobx";
 
 class FirebaseError {
     message: string;
@@ -8,10 +9,12 @@ class FirebaseError {
 
         if ( checkError ) {
             this.message = firebaseErrors[message];
-            throw new Error( this.message );
+            mobx.snackbar.open( this.message, "error" );
+            return;
         }
 
-        throw new Error( "Ошибка..." );
+        mobx.snackbar.open( "Неизвестная ошибка", "error" );
+        return;
     }
 }
 

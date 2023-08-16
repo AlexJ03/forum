@@ -3,12 +3,14 @@ import { db } from "@firebase-config";
 import type { IDiscussion } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
 import { fireError } from "@helpers";
+import mobx from "@mobx";
 
 class Discussions {
     async createDiscussion( categoryName: string, question: string, userToken: string ) {
         try {
             const data: WithFieldValue<IDiscussion> = { name: question, category: categoryName, fromUser: userToken, date: JSON.stringify( new Date() ) };
             await setDoc( doc( db, "discussions", question ), data ).catch( error => fireError.setError( error.message ) );
+            mobx.snackbar.open( "Вопрос успешно создан!", "success" );
         } catch ( error ) {
             fireError.setError( error.message );
         }

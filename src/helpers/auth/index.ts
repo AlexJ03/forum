@@ -4,6 +4,7 @@ import { auth } from "@firebase-config";
 import type { NavigateFunction } from "react-router-dom";
 import { token, database, fireError } from "@helpers";
 import type { IUserAuthData } from "@types";
+import mobx from "@mobx";
 
 class UserAuth {
     constructor() {
@@ -11,9 +12,12 @@ class UserAuth {
     }
 
     async signOut() {
-        signOut( auth ).then( () => {
+        signOut( auth )
+            .then( () => {
             token.removeToken();
-        } ).catch( ( error ) => fireError.setError( error.message ) );
+            mobx.snackbar.open( "Вы вышли из системы", "info" );
+        } )
+            .catch( ( error ) => fireError.setError( error.message ) );
     }
 
     checkUser( navigate: NavigateFunction ) {
@@ -35,6 +39,7 @@ class UserAuth {
 
                 token.setToken( uid );
                 database.users.addUser( uid );
+                mobx.snackbar.open( "Успешная регистрация!", "success" );
             } )
             .catch( error => fireError.setError( error.message ) );
     }
@@ -46,6 +51,7 @@ class UserAuth {
             .then( userCredential => {
                 const { uid } = userCredential.user;
                 token.setToken( uid );
+                mobx.snackbar.open( "Вы зашли в систему!", "success" );
             } )
             .catch( error => fireError.setError( error.message ) );
     }

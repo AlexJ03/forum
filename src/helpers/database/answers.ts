@@ -3,6 +3,7 @@ import { db } from "@firebase-config";
 import type { IAnswer } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
 import { fireError } from "@helpers";
+import mobx from "@mobx";
 
 class Answers {
     async createAnswerInDiscussion( discussionName: string, answer: string ) {
@@ -11,6 +12,7 @@ class Answers {
             await updateDoc( categoryRef, {
                 answers: arrayUnion( answer )
             } );
+            mobx.snackbar.open( "Ответ успешно создан!", "success" );
         } catch ( error ) {
             fireError.setError( error.message );
         }

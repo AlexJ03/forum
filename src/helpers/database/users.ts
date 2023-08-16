@@ -4,6 +4,8 @@ import { discussions as discussions_db } from "./discussions";
 import { answers as answers_db } from "./answers";
 import type { IUserData } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
+import { fireError } from "@helpers";
+import mobx from "@mobx";
 
 class Users {
     async addUser( token: string ) {
@@ -46,8 +48,9 @@ class Users {
             const data: WithFieldValue<IUserData> = { token, name };
 
             await setDoc( doc( db, "users", token ), data );
-        } catch ( e ) {
-            console.error( "Error adding document: ", e );
+            mobx.snackbar.open( "Данные изменены", "info" );
+        } catch ( error ) {
+            fireError.setError( error.message );
         }
     }
 
