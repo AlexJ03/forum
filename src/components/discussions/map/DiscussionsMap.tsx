@@ -1,21 +1,14 @@
-import { Box, List, ListItemButton, ListItemText } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import { Box } from "@mui/material";
 import mobx from "@mobx";
 import type { IDiscussion } from "@types";
+import { DiscussionCard } from "@components-discussions";
 
 const DiscussionsMap = ( { name }: Record<string, string> ) => {
     const questions = mobx.discussions.getDiscussions() && mobx.discussions.getDiscussions().filter( ( item: IDiscussion ) => item.category === name );
-    const navigate = useNavigate();
 
     return (
-        <Box sx={{ width: "100%" }}>
-            <List>
-                { questions && questions.map( ( item: IDiscussion ) => (
-                    <ListItemButton onClick={() => navigate( `/discussions/${item.name}` )} component="a" key={item?.name} sx={{ marginBottom: "20px", background: "#e3e3e3", borderRadius: 5 }}>
-                        <ListItemText sx={{ textAlign: "center" }} primary={ item?.name } />
-                    </ListItemButton>
-                ) ) }
-            </List>
+        <Box width="100%">
+            { questions && questions.map( ( { name, category, date, fromUser, answers } : IDiscussion ) => <DiscussionCard key={name} category={category} date={date} fromUser={fromUser} name={name} answers={answers} /> ) }
         </Box>
     );
 };
