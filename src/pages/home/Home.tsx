@@ -31,7 +31,7 @@ export const Home = observer( () => {
             <Nav />
 
             <Box>
-                { mobx.toggle.value === "Категории"
+                { mobx.toggleHome.value === "Категории"
                     ? mobx.categories.getCategories() && <CategoriesMap/>
                     : mobx.userData.getUsers() && <UsersMap users={mobx.userData.getUsers()} />
                 }

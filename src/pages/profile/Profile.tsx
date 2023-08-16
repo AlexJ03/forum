@@ -3,9 +3,12 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { database } from "@helpers";
 import { ProfileDiscussionsMap, ProfileAnswersMap } from "@components-profile";
-import type { IUserFullData } from "../../types/entities/user";
+import type { IUserFullData } from "@types";
+import { Toggle } from "@components-toggle";
+import mobx from "@mobx";
+import { observer } from "mobx-react-lite";
 
-export const Profile = () => {
+export const Profile = observer( () => {
     const { token } = useParams();
 
     const [userData, setUserData] = useState<IUserFullData | null>( null );
@@ -17,21 +20,27 @@ export const Profile = () => {
     }, [token] );
 
     return (
-        <Box>
+        <Box pt={5}>
             <Container maxWidth="lg">
                 {userData && (
                     <>
-                        <Typography variant="h3">{ userData?.user?.name }</Typography>
-                        <Typography mb={3} variant="subtitle1">{ userData?.user.token }</Typography>
+                        {userData.user?.name &&
+                            <Typography variant="h2" fontSize="30px" textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>
+                        }
 
-                        <h1>Обсуждения:</h1>
-                        { userData?.discussions && <ProfileDiscussionsMap discussions={userData?.discussions} />}
+                        <Typography textAlign="center" mb={5} variant="h3" fontSize="25px">ID: { userData.user.token }</Typography>
 
-                        <h1>Ответы:</h1>
-                        { userData?.answers && <ProfileAnswersMap answers={userData?.answers} />}
+                        <Box display="flex" justifyContent="center" mb={3}>
+                            <Toggle currentToggle={mobx.toggleProfile} data={["Вопросы", "Ответы"]} />
+                        </Box>
+
+                        { mobx.toggleProfile.value === "Вопросы"
+                            ? <ProfileDiscussionsMap discussions={userData?.discussions} />
+                            : <ProfileAnswersMap answers={userData?.answers} />
+                        }
                     </>
                 )}
             </Container>
         </Box>
     );
-};
+} );

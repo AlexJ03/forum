@@ -1,20 +1,19 @@
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
-import React from "react";
+import type { FC } from "react";
 import { observer } from "mobx-react-lite";
-import { toggle } from "../../mobx/toggle";
+import type { IToggle, toggleHomeType, toggleProfileType } from "@types";
 
-export const Toggle = observer( () => {
+export const Toggle: FC<IToggle<toggleHomeType | toggleProfileType>> = observer( ( { data, currentToggle } ) => {
 
     return (
         <ToggleButtonGroup
             color="secondary"
-            value={toggle.value}
+            value={currentToggle.value}
             exclusive
-            onChange={() => toggle.changeValue( toggle.value === "Пользователи" ? "Категории" : "Пользователи" )}
+            onChange={() => currentToggle.changeValue( currentToggle.value === data[0] ? data[1] : data[0] )}
             aria-label="Platform"
         >
-            <ToggleButton value="Категории">Категории</ToggleButton>
-            <ToggleButton value="Пользователи">Пользователи</ToggleButton>
+            { data && data.map( ( text: string ) => <ToggleButton key={text} value={text}>{text}</ToggleButton> ) }
         </ToggleButtonGroup>
     );
 } );

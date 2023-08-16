@@ -1,16 +1,18 @@
 import { makeAutoObservable } from "mobx";
-import type { toggleType } from "@types";
+import type { toggleHomeType, toggleProfileType } from "@types";
 
-class Toggle {
-    value: toggleType = "Категории";
+export class Toggle<T> {
+    value: T;
 
-    constructor() {
+    constructor( defaultValue: T ) {
         makeAutoObservable( this );
+        this.value = defaultValue;
     }
 
-    changeValue( value: toggleType ) {
+    changeValue( value: T ) {
         this.value = value;
     }
 }
 
-export const toggle = new Toggle();
+export const toggleHome = new Toggle<toggleHomeType>( "Категории" );
+export const toggleProfile = new Toggle<toggleProfileType>( "Вопросы" );

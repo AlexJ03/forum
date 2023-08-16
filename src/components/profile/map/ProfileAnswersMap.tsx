@@ -1,24 +1,14 @@
-import { Box, List, ListItem, ListItemButton, Typography } from "@mui/material";
-import { formatDate, parseDate } from "@utils";
+import { Box, List } from "@mui/material";
 import type { FC } from "react";
-import { useNavigate } from "react-router-dom";
 import type { IAnswer, IAnswers } from "@types";
+import { AnswerCard } from "@components-answers";
 
 const ProfileAnswersMap: FC<IAnswers> = ( { answers } ) => {
-    const navigate = useNavigate();
 
     return (
-        <Box sx={{ width: "100%" }}>
+        <Box width="100%">
             <List>
-                { answers && answers.map( ( item: IAnswer ) => (
-                    <ListItemButton onClick={() => navigate( `/discussions/${item.discussion}` )} component="a" key={item?.name} sx={{ marginBottom: "20px", background: "#e3e3e3", borderRadius: 5 }}>
-                        <ListItem sx={{ columnGap: 5 }}>
-                            <Typography variant="h3" fontSize="20px">{ item?.name }</Typography>
-                            <Typography variant="subtitle1">{ item?.fromUser }</Typography>
-                            <Typography variant="subtitle2">Дата публикации: { formatDate( parseDate( item?.date ) ) }</Typography>
-                        </ListItem>
-                    </ListItemButton>
-                ) ) }
+                { answers && answers.map( ( item: IAnswer ) => <AnswerCard key={item.name} name={item.name} date={item.date} fromUser={item.fromUser} /> ) }
             </List>
         </Box>
     );
