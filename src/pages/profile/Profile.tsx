@@ -1,28 +1,26 @@
 import { Box, Container, Typography } from "@mui/material";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { database } from "@helpers";
 import { ProfileDiscussionsMap, ProfileAnswersMap } from "@components-profile";
 import type { IUserFullData } from "@types";
 import { Toggle } from "@components-toggle";
 import mobx from "@mobx";
 import { observer } from "mobx-react-lite";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { database } from "@helpers";
 
 export const Profile = observer( () => {
     const { token } = useParams();
 
-    const [userData, setUserData] = useState<IUserFullData | null>( null );
-
     useEffect( () => {
-        if ( token ) {
-            database.users.getFullUserData( token ).then( ( data: IUserFullData ) => setUserData( data ) );
-        }
+        database.users.getFullUserData( token ).then( ( data: IUserFullData ) => mobx.userData.setFullUserData( data ) );
     }, [token] );
+
+    const userData: IUserFullData = mobx.userData.getFullUserData() && mobx.userData.getFullUserData();
 
     return (
         <Box pt={5}>
             <Container maxWidth="lg">
-                {userData && (
+                {userData?.user?.token && (
                     <>
                         {userData.user?.name &&
                             <Typography variant="h2" fontSize="30px" textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>

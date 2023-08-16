@@ -1,6 +1,8 @@
 import { Box, Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { token, database } from "@helpers";
+import type { IAnswer } from "@types";
+import mobx from "@mobx";
 
 const AnswerController = ( { name }: Record<string, string> ) => {
     const [answer, setAnswer] = useState( "" );
@@ -8,6 +10,8 @@ const AnswerController = ( { name }: Record<string, string> ) => {
     const createAnswer = async () => {
         await database.answers.createAnswerInDiscussion( name, answer );
         await database.answers.createAnswer( answer, name, token.getToken() );
+
+        database.answers.getAnswers().then( ( data: IAnswer[] ) => mobx.answers.setAnswers( data ) );
 
         setAnswer( "" );
     };

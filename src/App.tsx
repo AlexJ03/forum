@@ -1,15 +1,39 @@
 import { Home, Profile, Discussion, CategoryList, Auth, Preview } from "./pages";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { userAuth } from "@helpers";
+import { database, token as UserToken, userAuth } from "@helpers";
 import { Snackbar } from "./components/snackbar";
+import type { IUserData } from "@types";
+import mobx from "@mobx";
+import { observer } from "mobx-react-lite";
+import type { IUserFullData } from "@types";
 
-const App = () => {
+const App = observer( () => {
     const navigate = useNavigate();
 
+    // useEffect( () => {
+    //     userAuth.checkUser( navigate );
+    // }, [] );
+
     useEffect( () => {
-        userAuth.checkUser( navigate );
-    }, [] );
+        const token = UserToken.getToken();
+
+        if ( token ) {
+            userAuth.checkUser( navigate );
+
+            database.users.getUserData( UserToken.getToken() ).then( ( data: IUserData ) => mobx.userData.setUser( data ) );
+
+            database.users.getUsers().then( ( data: IUserData[] ) => mobx.userData.setUsers( data ) );
+
+            database.categories.getCategories().then( data => mobx.categories.setCategories( data ) );
+
+            database.discussions.getDiscussions().then( data => mobx.discussions.setDiscussions( data ) );
+
+            database.answers.getAnswers().then( data => mobx.answers.setAnswers( data ) );
+
+
+        }
+    }, [UserToken.getToken()] );
 
   return (
       <>
@@ -24,6 +48,6 @@ const App = () => {
           <Snackbar />
       </>
   );
-};
+} );
 
 export default App;

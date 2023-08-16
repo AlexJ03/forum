@@ -1,9 +1,11 @@
 import { makeAutoObservable, toJS } from "mobx";
 import type { IUserData } from "@types";
+import type { IUserFullData } from "@types";
 
 class Data {
     data: IUserData;
     users: IUserData[];
+    fullUserData: IUserFullData;
     
     constructor() {
         makeAutoObservable( this );
@@ -15,6 +17,14 @@ class Data {
 
     getUser(): IUserData {
         return toJS( this.data );
+    }
+
+    setFullUserData( data: IUserFullData ) {
+        this.fullUserData = data;
+    }
+
+    getFullUserData() {
+        return toJS( this.fullUserData );
     }
 
     setUsers( data: IUserData[] ) {

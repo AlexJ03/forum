@@ -3,20 +3,17 @@ import mobx from "@mobx";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { database, token } from "@helpers";
+import type { IUserData } from "@types";
+import { modalProfileStyles } from "../../../utils/styles";
 
 const ModalProfile = observer( () => {
     const [name, setName] = useState( "" );
 
-    const style = {
-        position: "absolute" as const,
-        top: "30%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-        width: 600,
-        bgcolor: "background.paper",
-        borderRadius: 5,
-        boxShadow: 24,
-        p: 4,
+    const saveUserData = async () => {
+        await database.users.createUserName( token.getToken(), name );
+        await database.users.getUserData( token.getToken() ).then( ( data: IUserData ) => mobx.userData.setUser( data ) );
+
+        mobx.userProfileModal.close();
     };
 
     return (
@@ -26,7 +23,7 @@ const ModalProfile = observer( () => {
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
         >
-            <Box sx={style}>
+            <Box sx={modalProfileStyles}>
                 <Typography id="modal-modal-title" variant="h6" component="h2">
                     Профиль
                 </Typography>
@@ -35,9 +32,7 @@ const ModalProfile = observer( () => {
                     <TextField onChange={e => setName( e.target.value )} type="text" placeholder={ mobx.userData.data?.name || "Придумайте имя" }  />
                     <TextField type="text" label="ID" defaultValue={ token.getToken() } disabled />
 
-                    <Button variant="contained" onClick={() => {
-                        database.users.createUserName( token.getToken(), name ).then( () => location.reload() );
-                    }}>Сохранить</Button>
+                    <Button variant="contained" onClick={saveUserData}>Сохранить</Button>
                 </Box>
             </Box>
         </Modal>
