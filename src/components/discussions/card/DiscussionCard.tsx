@@ -4,7 +4,7 @@ import type { FC } from "react";
 import type { IDiscussion } from "@types";
 import { formatDate, parseDate } from "@utils";
 
-const DiscussionCard: FC<IDiscussion> = ( { name, date, fromUser } ) => {
+const DiscussionCard: FC<Omit<IDiscussion, "answers" | "category">> = ( { name, date, fromUser } ) => {
     const navigate = useNavigate();
 
     return (

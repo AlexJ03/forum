@@ -8,11 +8,17 @@ const QuestionCard: FC<IDiscussion> = ( { name, date, fromUser, category } ) => 
     const navigate = useNavigate();
 
     return (
-        <Box bgcolor="#ccc" px={10} py={5} borderRadius={5}>
-            <Typography mb={3} variant="body1">Секция: { category }</Typography>
-            <Typography mb={3} variant="h2" fontSize="30px">{ name }</Typography>
-            <Typography mb={1} variant="subtitle1">Вопрос задал пользователь: <Typography onClick={() => navigate( `/profile/${fromUser}` )} variant="subtitle1" sx={{ textDecoration: "underline", cursor: "pointer" }}>{ fromUser }</Typography></Typography>
-            <Typography mb={1} variant="subtitle2">Дата публикации - { formatDate( parseDate( date ) ) }</Typography>
+        <Box bgcolor="#ccc" px={7} py={3} borderRadius={5} width="100%" minHeight="300px" mb={7}>
+            <Box mb={1}>
+                <Typography variant="subtitle2">Секция: { category.toLowerCase() }</Typography>
+            </Box>
+
+            <Box mb={2} display="flex" justifyContent="space-between" alignItems="center">
+                <Typography onClick={() => navigate( `/profile/${fromUser}` )} variant="subtitle1" sx={{ textDecoration: "underline", cursor: "pointer" }}>{ fromUser }</Typography>
+                <Typography variant="subtitle1">{ formatDate( parseDate( date ) ) }</Typography>
+            </Box>
+
+            <Typography variant="h2" fontSize="23px">{ name }</Typography>
         </Box>
     );
 };

@@ -8,7 +8,7 @@ const DiscussionsMap = ( { name }: Record<string, string> ) => {
 
     return (
         <Box width="100%">
-            { questions && questions.map( ( { name, category, date, fromUser, answers } : IDiscussion ) => <DiscussionCard key={name} category={category} date={date} fromUser={fromUser} name={name} answers={answers} /> ) }
+            { questions && questions.map( ( discussion : IDiscussion ) => <DiscussionCard key={discussion.name} date={discussion.date} fromUser={discussion.fromUser} name={discussion.name} /> ) }
         </Box>
     );
 };
