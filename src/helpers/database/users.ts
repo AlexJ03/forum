@@ -61,6 +61,11 @@ class Users {
 
         return { user, discussions, answers };
     }
+
+    async getUserName( token: string ) {
+        const data = await this.getUserData( token );
+        return data?.name;
+    }
 }
 
 export const users = new Users();
