@@ -21,15 +21,16 @@ class UserAuth {
     }
 
     checkUser( navigate: NavigateFunction ) {
-        onAuthStateChanged( auth, ( user ) => {
-            if ( user ) {
+            onAuthStateChanged( auth, ( user ) => {
                 const path = window.location.pathname;
-                if ( path === "/" || path === "/auth" ) {
+
+                if ( user && ( path === "/" || path === "/auth" ) ) {
                     navigate( "/homepage" );
                 }
-            } else {
-                navigate( "/" );
-            }
+
+                if ( !user && ( path !== "/" && path !== "/auth" ) ) {
+                    navigate( "/" );
+                }
         } );
     }
 

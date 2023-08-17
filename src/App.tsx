@@ -6,16 +6,15 @@ import { Snackbar } from "./components/snackbar";
 import type { IUserData } from "@types";
 import mobx from "@mobx";
 import { observer } from "mobx-react-lite";
-import type { IUserFullData } from "@types";
 
 const App = observer( () => {
     const navigate = useNavigate();
 
     useEffect( () => {
         const token = UserToken.getToken();
+        userAuth.checkUser( navigate );
 
         if ( token ) {
-            userAuth.checkUser( navigate );
 
             database.users.getUserData( UserToken.getToken() ).then( ( data: IUserData ) => mobx.userData.setUser( data ) );
 
@@ -26,7 +25,6 @@ const App = observer( () => {
             database.discussions.getDiscussions().then( data => mobx.discussions.setDiscussions( data ) );
 
             database.answers.getAnswers().then( data => mobx.answers.setAnswers( data ) );
-
 
         }
     }, [UserToken.getToken()] );
