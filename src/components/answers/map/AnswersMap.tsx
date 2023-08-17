@@ -8,7 +8,7 @@ const AnswersMap: FC<IAnswers> = ( { answers } ) => {
     return (
         <Box sx={{ width: "100%" }}>
             <List>
-                { answers && answers.map( ( { name, date, fromUser } : Omit<IAnswer, "discussion"> ) => <AnswerCard key={name} date={date} fromUser={fromUser} name={name} /> ) }
+                { answers && answers.map( ( { name, date, fromUser, discussion } : IAnswer ) => <AnswerCard key={name} date={date} fromUser={fromUser} name={name} discussion={discussion} /> ) }
             </List>
         </Box>
     );
