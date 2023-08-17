@@ -3,9 +3,12 @@ import { formatDate, parseDate } from "@utils";
 import type { FC } from "react";
 import type { IAnswer } from "@types";
 import { useNavigate } from "react-router-dom";
+import { decrypt } from "../../../utils/hash";
 
-const AnswerCard: FC<IAnswer> = ( { name, fromUser, date, discussion } ) => {
+const AnswerCard: FC<IAnswer> = ( { name, fromUser, date, discussion: d } ) => {
     const navigate = useNavigate();
+
+    const discussion = decrypt( d );
 
     return (
         <Box onClick={() => navigate( `/discussions/${discussion}` )} sx={{ marginBottom: "30px", background: "#e3e3e3", borderRadius: 5, width: "100%", minHeight: "200px", px: 5, py: 3, transition: "300ms", ":hover": { background: "#d3d3d3" } }} key={name}>

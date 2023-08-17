@@ -2,6 +2,7 @@ import type { FC } from "react";
 import { Box, List } from "@mui/material";
 import type { IAnswer, IAnswers } from "@types";
 import { AnswerCard } from "@components-answers";
+import { decrypt } from "../../../utils/hash";
 
 const AnswersMap: FC<IAnswers> = ( { answers } ) => {
 

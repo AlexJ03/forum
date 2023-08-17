@@ -6,9 +6,12 @@ import mobx from "@mobx";
 import { filterAnswers, findCurrentDiscussion } from "../../utils/filter";
 import { observer } from "mobx-react-lite";
 import { Progress } from "../../components/progress";
+import { decrypt } from "../../utils/hash";
 
 export const Discussion = observer( () => {
-    const { name } = useParams();
+    const { name: n } = useParams();
+
+    const name = decrypt( n );
 
     const question = name && mobx.discussions.getDiscussions() && findCurrentDiscussion( mobx.discussions.getDiscussions(), name );
     const answers = name && mobx.answers.getAnswers() && filterAnswers( mobx.answers.getAnswers(), name );

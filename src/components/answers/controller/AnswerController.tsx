@@ -12,6 +12,7 @@ const AnswerController = ( { name }: Record<string, string> ) => {
         database.users.getUserName( token.getToken() ).then( ( name: string ) => setUserName( name ) );
     }, [] );
 
+
     const createAnswer = async () => {
         const userData: IUserData = {
             token: token.getToken(),

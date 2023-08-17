@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { database, token as userToken } from "@helpers";
 import type { IDiscussion, IUserData } from "@types";
 import mobx from "@mobx";
-import { WithFieldValue } from "@firebase/firestore";
 
 const DiscussionController = ( { name }: Record<string, string> ) => {
     const [discussion, setDiscussion] = useState( "" );
