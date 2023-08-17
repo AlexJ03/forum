@@ -1,6 +1,7 @@
 import { Box, Button, TextField } from "@mui/material";
+import type { ChangeEvent } from "react";
 import { useEffect, useState } from "react";
-import { database, token as userToken } from "@helpers";
+import { database, handleKeyDown, token as userToken } from "@helpers";
 import type { IDiscussion, IUserData } from "@types";
 import mobx from "@mobx";
 
@@ -13,22 +14,22 @@ const DiscussionController = ( { name }: Record<string, string> ) => {
     }, [] );
 
     const createDiscussion = async () => {
-        const userData: IUserData = {
-            token: userToken.getToken(),
-            name: userName
-        };
+            const userData: IUserData = {
+                token: userToken.getToken(),
+                name: userName
+            };
 
-        await database.discussions.createDiscussionInCategories( name, discussion );
-        await database.discussions.createDiscussion( name, discussion, userData );
+            await database.discussions.createDiscussionInCategories( name, discussion );
+            await database.discussions.createDiscussion( name, discussion, userData );
 
-        database.discussions.getDiscussions().then( ( data: IDiscussion[] ) => mobx.discussions.setDiscussions( data ) );
+            database.discussions.getDiscussions().then( ( data: IDiscussion[] ) => mobx.discussions.setDiscussions( data ) );
 
-        setDiscussion( "" );
+            setDiscussion( "" );
     };
 
     return (
         <Box display="flex" alignItems="center" columnGap={3} width="100%" px={5}>
-            <TextField sx={{ width: "80%" }} variant="outlined" value={discussion} onChange={e => setDiscussion( e.target.value )} type="text" placeholder="Сформулируйте вопрос" />
+            <TextField onKeyDown={( e: any ) => handleKeyDown( e, createDiscussion )} sx={{ width: "80%" }} variant="outlined" value={discussion} onChange={e => setDiscussion( e.target.value )} type="text" placeholder="Сформулируйте вопрос" />
             <Button variant="contained" size="large" onClick={createDiscussion}>Создать</Button>
         </Box>
     );
