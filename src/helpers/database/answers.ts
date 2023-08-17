@@ -18,12 +18,12 @@ class Answers {
         }
     }
 
-    async createAnswer( answer: string, discussionName: string, userToken: string ) {
+    async createAnswer( answer: string, discussionName: string, fromUser: any ) {
         try {
             const data: WithFieldValue<IAnswer> = {
                 date: JSON.stringify( new Date ),
                 name: answer,
-                fromUser: userToken,
+                fromUser,
                 discussion: discussionName
             };
 
@@ -49,7 +49,7 @@ class Answers {
 
     async getUserAnswers( token: string ) {
         const answers: IAnswer[] = await this.getAnswers();
-        const result = answers.filter( ( item: IAnswer ) => item.fromUser === token );
+        const result = answers.filter( ( item: IAnswer ) => item.fromUser.token === token );
 
         return result;
     }

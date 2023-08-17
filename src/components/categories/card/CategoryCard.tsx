@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import type { ICategories } from "@types";
-import { Avatar, Box, Grid, ListItemAvatar, ListItemButton, ListItemText, Typography } from "@mui/material";
+import { Avatar, Grid, ListItemAvatar, ListItemButton, ListItemText, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { categoriesImages } from "../../../data/categories";
 

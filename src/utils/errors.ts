@@ -5,4 +5,6 @@ export const firebaseErrors: Record<string, string> = {
     "Firebase: Error (auth/user-not-found).": "Пользователь не найден",
     "Firebase: Error (auth/wrong-password).": "Неверный пароль",
     "Invalid document reference. Document references must have an even number of segments, but discussions has 1.": "Некорректные данные",
+    "Document is not defined...": "Документ не найден",
+    "Firebase: Error (auth/email-already-in-use).": "Пользователь с таким email  уже существует"
 };

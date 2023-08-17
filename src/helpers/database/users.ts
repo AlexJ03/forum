@@ -26,7 +26,7 @@ class Users {
         if ( docSnap.exists() ) {
             return docSnap.data();
         } else {
-            console.error( "Document is not defined..." );
+            fireError.setError( "Document is not defined..." );
         }
     }
 
@@ -62,7 +62,7 @@ class Users {
         return { user, discussions, answers };
     }
 
-    async getUserName( token: string ) {
+    async getUserName( token: string ): Promise<string> {
         const data = await this.getUserData( token );
         return data?.name;
     }

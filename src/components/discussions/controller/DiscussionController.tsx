@@ -1,15 +1,26 @@
 import { Box, Button, TextField } from "@mui/material";
-import { useState } from "react";
-import { database, token } from "@helpers";
-import type { IDiscussion } from "@types";
+import { useEffect, useState } from "react";
+import { database, token as userToken } from "@helpers";
+import type { IDiscussion, IUserData } from "@types";
 import mobx from "@mobx";
+import { WithFieldValue } from "@firebase/firestore";
 
 const DiscussionController = ( { name }: Record<string, string> ) => {
     const [discussion, setDiscussion] = useState( "" );
+    const [userName, setUserName] = useState<string | undefined>( undefined );
+
+    useEffect( () => {
+        database.users.getUserName( userToken.getToken() ).then( ( name: string ) => setUserName( name ) );
+    }, [] );
 
     const createDiscussion = async () => {
+        const userData: IUserData = {
+            token: userToken.getToken(),
+            name: userName
+        };
+
         await database.discussions.createDiscussionInCategories( name, discussion );
-        await database.discussions.createDiscussion( name, discussion, token.getToken() );
+        await database.discussions.createDiscussion( name, discussion, userData );
 
         database.discussions.getDiscussions().then( ( data: IDiscussion[] ) => mobx.discussions.setDiscussions( data ) );
 
