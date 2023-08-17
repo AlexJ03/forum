@@ -7,7 +7,7 @@ import { observer } from "mobx-react-lite";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { database } from "@helpers";
-import { Progress } from "../../components/progress";
+import { Progress } from "@components-progress";
 
 export const Profile = observer( () => {
     const { token } = useParams();

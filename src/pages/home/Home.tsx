@@ -4,7 +4,7 @@ import { Nav } from "@components-nav";
 import mobx from "@mobx";
 import { CategoriesMap } from "@components-categories";
 import { UsersMap } from "@components-users";
-import { Progress } from "../../components/progress";
+import { Progress } from "@components-progress";
 
 export const Home = observer( () => {
 
@@ -18,7 +18,7 @@ export const Home = observer( () => {
 
                         <Box>
                             { mobx.toggleHome.value === "Категории"
-                                ? mobx.categories.getCategories() && <CategoriesMap/>
+                                ? mobx.categories.getCategories() && <CategoriesMap />
                                 : mobx.userData.getUsers() && <UsersMap users={mobx.userData.getUsers()} />
                             }
                         </Box>

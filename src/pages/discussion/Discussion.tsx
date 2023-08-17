@@ -3,10 +3,9 @@ import { Box, Container } from "@mui/material";
 import { AnswerController, AnswersMap } from "@components-answers";
 import { QuestionCard } from "@components-questions";
 import mobx from "@mobx";
-import { filterAnswers, findCurrentDiscussion } from "../../utils/filter";
+import { filterAnswers, findCurrentDiscussion, decrypt } from "@utils";
 import { observer } from "mobx-react-lite";
-import { Progress } from "../../components/progress";
-import { decrypt } from "../../utils/hash";
+import { Progress } from "@components-progress";
 
 export const Discussion = observer( () => {
     const { name: n } = useParams();

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Cursor, useTypewriter } from "react-simple-typewriter";
 import { useEffect, useState } from "react";
 import { token as userToken } from "@helpers";
-import { Progress } from "../../components/progress";
+import { Progress } from "@components-progress";
 
 export const Preview = () => {
     const navigate = useNavigate();

@@ -11,6 +11,8 @@ export const alias_mobx = path.resolve( __dirname, "src", "mobx" );
 export const alias_firebase = path.resolve( __dirname, "src", "firebase" );
 export const alias_utils = path.resolve( __dirname, "src", "utils" );
 export const alias_types = path.resolve( __dirname, "src", "types" );
+export const alias_pages = path.resolve( __dirname, "src", "pages" );
+export const alias_data = path.resolve( __dirname, "src", "data" );
 
 // Components Alias
 export const alias_components_discussions = path.resolve( __dirname, "src", "components", "discussions" );
@@ -23,6 +25,8 @@ export const alias_components_profile = path.resolve( __dirname, "src", "compone
 export const alias_components_questions = path.resolve( __dirname, "src", "components", "questions" );
 export const alias_components_users = path.resolve( __dirname, "src", "components", "users" );
 export const alias_components_toggle = path.resolve( __dirname, "src", "components", "toggle" );
+export const alias_components_snack = path.resolve( __dirname, "src", "components", "snackbar" );
+export const alias_components_progress = path.resolve( __dirname, "src", "components", "progress" );
 
 // Global Css Alias
 export const alias_global_css = path.resolve( __dirname, "styles", "global.css" );

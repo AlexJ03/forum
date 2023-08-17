@@ -1,12 +1,11 @@
-import { Home, Profile, Discussion, CategoryList, Auth, Preview } from "./pages";
+import { Home, Profile, Discussion, CategoryList, Auth, Preview, NotFound } from "@pages";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { database, token as UserToken, userAuth } from "@helpers";
-import { Snackbar } from "./components/snackbar";
+import { Snackbar } from "@components-snack";
 import type { IUserData } from "@types";
 import mobx from "@mobx";
 import { observer } from "mobx-react-lite";
-import { NotFound } from "./pages/notFound";
 
 const App = observer( () => {
     const navigate = useNavigate();

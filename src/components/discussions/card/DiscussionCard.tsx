@@ -2,8 +2,7 @@ import { Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import type { FC } from "react";
 import type { IDiscussion } from "@types";
-import { formatDate, parseDate } from "@utils";
-import { encrypt } from "../../../utils/hash";
+import { formatDate, parseDate, encrypt } from "@utils";
 
 const DiscussionCard: FC<Omit<IDiscussion, "answers" | "category">> = ( { name, date, fromUser } ) => {
     const navigate = useNavigate();

@@ -3,8 +3,8 @@ import mobx from "@mobx";
 import type { IDiscussion } from "@types";
 import { DiscussionCard } from "@components-discussions";
 import { observer } from "mobx-react-lite";
-import { filterDiscussions } from "../../../utils/filter";
-import { Progress } from "../../progress";
+import { filterDiscussions } from "@utils";
+import { Progress } from "@components-progress";
 
 const DiscussionsMap = observer( ( { name }: Record<string, string> ) => {
     const questions = name && mobx.discussions.getDiscussions() && filterDiscussions( mobx.discussions.getDiscussions(), name );

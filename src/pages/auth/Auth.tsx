@@ -2,7 +2,7 @@ import { Register, Login } from "@components-auth";
 import { useEffect, useState } from "react";
 import { Box, Button, Container, Typography } from "@mui/material";
 import { token as userToken } from "@helpers";
-import { Progress } from "../../components/progress";
+import { Progress } from "@components-progress";
 
 export const Auth = () => {
     const [isLogin, setIsLogin] = useState( false );
@@ -13,8 +13,6 @@ export const Auth = () => {
             setToken( true );
         }
     }, [userToken.getToken()] );
-
-    console.log( userToken );
 
     return (
         <>

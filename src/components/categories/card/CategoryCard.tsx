@@ -1,8 +1,8 @@
 import type { FC } from "react";
 import type { ICategories } from "@types";
-import { Avatar, Grid, ListItemAvatar, ListItemButton, ListItemText, Typography } from "@mui/material";
+import { Avatar, Grid, ListItemAvatar, ListItemButton, ListItemText } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { categoriesImages } from "../../../data/categories";
+import { categoriesImages } from "@data";
 
 const CategoryCard: FC<ICategories> = ( { category } ) => {
     const navigate = useNavigate();

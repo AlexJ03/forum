@@ -17,6 +17,8 @@
       "@firebase-config": ["./src/firebase"],
       "@utils": ["./src/utils"],
       "@types": ["./src/types"],
+      "@pages": ["./src/pages"],
+      "@data": ["./src/data"],
 
       // Components Alias
       "@components-discussions": ["./src/components/discussions"],
@@ -29,6 +31,8 @@
       "@components-questions": ["./src/components/questions"],
       "@components-users": ["./src/components/users"],
       "@components-toggle": ["./src/components/toggle"],
+      "@components-snack": ["./src/components/snackbar"],
+      "@components-progress": ["./src/components/progress"],
 
       // Global Css Alias
       "@global-css": ["./styles/global.css"]

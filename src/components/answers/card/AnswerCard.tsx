@@ -1,9 +1,8 @@
 import { Box, Typography } from "@mui/material";
-import { formatDate, parseDate } from "@utils";
+import { formatDate, parseDate, encrypt } from "@utils";
 import type { FC } from "react";
 import type { IAnswer } from "@types";
 import { useNavigate } from "react-router-dom";
-import { encrypt } from "../../../utils/hash";
 import type { IWithRelocate } from "@types";
 
 const AnswerCard: FC<IAnswer & IWithRelocate> = ( { name, fromUser, date, discussion: d, relocate } ) => {

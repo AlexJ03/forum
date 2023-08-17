@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import { database, token } from "@helpers";
 import type { IUserData } from "@types";
-import { modalProfileStyles } from "../../../utils/styles";
+import { modalProfileStyles } from "@utils";
 
 const ModalProfile = observer( () => {
     const [name, setName] = useState( "" );
