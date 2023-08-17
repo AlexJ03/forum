@@ -6,6 +6,7 @@ import { Snackbar } from "./components/snackbar";
 import type { IUserData } from "@types";
 import mobx from "@mobx";
 import { observer } from "mobx-react-lite";
+import { NotFound } from "./pages/notFound";
 
 const App = observer( () => {
     const navigate = useNavigate();
@@ -41,6 +42,7 @@ const App = observer( () => {
             <Route path="/profile/:token" element={<Profile />} />
             <Route path="/categories/:name" element={<CategoryList />} />
             <Route path="/discussions/:name" element={<Discussion />} />
+            <Route path="*" element={<NotFound />} />
         </Routes>
           <Snackbar />
       </>
