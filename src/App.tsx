@@ -11,8 +11,11 @@ const App = observer( () => {
     const navigate = useNavigate();
 
     useEffect( () => {
-        const token = UserToken.getToken();
         userAuth.checkUser( navigate );
+    }, [UserToken.getToken() && location.pathname] );
+
+    useEffect( () => {
+        const token = UserToken.getToken();
 
         if ( token ) {
 
