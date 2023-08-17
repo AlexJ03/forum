@@ -8,7 +8,7 @@ const ProfileAnswersMap: FC<IAnswers> = ( { answers } ) => {
     return (
         <Box width="100%">
             <List>
-                { answers && answers.map( ( item: IAnswer ) => <AnswerCard key={item.name} name={item.name} date={item.date} fromUser={item.fromUser} discussion={item.discussion} /> ) }
+                { answers && answers.map( ( item: IAnswer ) => <AnswerCard key={item.name} name={item.name} date={item.date} fromUser={item.fromUser} discussion={item.discussion} relocate={true} /> ) }
             </List>
         </Box>
     );

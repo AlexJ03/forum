@@ -1,6 +1,6 @@
 import { IUserAuthData } from "./auth";
 import { IAnswer, IDiscussion, ICategory, IUserData, ICategories, IUsers } from "./database";
-import { IAnswers, IUserFullData, IDiscussions } from "./entities";
+import { IAnswers, IUserFullData, IDiscussions, withRelocate, IWithRelocate } from "./entities";
 import { IToggle, toggleHomeType, toggleProfileType } from "./toggle";
 import { ISnackbar, statusSnackType } from "./snackbar";
 
@@ -19,5 +19,7 @@ export {
     IUsers,
     IToggle,
     ISnackbar,
-    statusSnackType
+    statusSnackType,
+    withRelocate,
+    IWithRelocate
 };
