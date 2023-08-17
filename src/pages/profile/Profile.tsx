@@ -21,27 +21,23 @@ export const Profile = observer( () => {
     return (
         <>
             {
-                userData ? (
+                userData?.user?.token === token ? (
                     <Box pt={5}>
                         <Container maxWidth="lg">
-                            {userData?.user?.token && (
-                                <>
-                                    {userData.user?.name &&
-                                        <Typography variant="h2" fontSize="30px" textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>
-                                    }
+                            {userData.user?.name &&
+                                <Typography variant="h2" fontSize="30px" textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>
+                            }
 
-                                    <Typography textAlign="center" mb={5} variant="h3" fontSize="25px">ID: { userData.user.token }</Typography>
+                            <Typography textAlign="center" mb={5} variant="h3" fontSize="25px">ID: { userData.user.token }</Typography>
 
-                                    <Box display="flex" justifyContent="center" mb={3}>
-                                        <Toggle currentToggle={mobx.toggleProfile} data={["Вопросы", "Ответы"]} />
-                                    </Box>
+                            <Box display="flex" justifyContent="center" mb={3}>
+                                <Toggle currentToggle={mobx.toggleProfile} data={["Вопросы", "Ответы"]} />
+                            </Box>
 
-                                    { mobx.toggleProfile.value === "Вопросы"
-                                        ? <ProfileDiscussionsMap discussions={userData?.discussions} />
-                                        : <ProfileAnswersMap answers={userData?.answers} />
-                                    }
-                                </>
-                            )}
+                            { mobx.toggleProfile.value === "Вопросы"
+                                ? <ProfileDiscussionsMap discussions={userData?.discussions} />
+                                : <ProfileAnswersMap answers={userData?.answers} />
+                            }
                         </Container>
                     </Box>
                 )
