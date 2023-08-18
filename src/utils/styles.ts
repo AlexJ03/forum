@@ -3,7 +3,10 @@ export const modalProfileStyles = {
     top: "30%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 600,
+    width: {
+        xs: "100%",
+        md: 600
+    },
     bgcolor: "background.paper",
     borderRadius: 5,
     boxShadow: 24,

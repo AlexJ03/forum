@@ -29,13 +29,13 @@ export const Preview = () => {
                     <Box sx={{ width: "100%", height: "100vh", backgroundColor: "background.default" }}>
                         <Container maxWidth="lg" sx={{ margin: "0 auto" }}>
                             <Box pt={30}>
-                                <Typography variant="h1" fontSize="40px" color="#fff" mb={3} textAlign="center">RuForum</Typography>
-                                <Typography variant="h2" fontSize="30px" color="#fff" mb={5} textAlign="center">
+                                <Typography variant="h1" sx={{ fontSize: { xs: "25px", sm: "30px", lg: "40px" } }} color="#fff" mb={3} textAlign="center">RuForum</Typography>
+                                <Typography variant="h2" sx={{ fontSize: { xs: "20px", sm: "25px", lg: "30px" } }} color="#fff" mb={5} textAlign="center">
                                     Здесь вы можете { text }
                                     <Cursor cursorColor='red' />
                                 </Typography>
                                 <Box display="flex" justifyContent="center">
-                                    <Button variant="contained" color="primary" size="large" onClick={() => navigate( "/auth" )}>Приступить</Button>
+                                    <Button size="small" variant="contained" color="primary" onClick={() => navigate( "/auth" )}>Приступить</Button>
                                 </Box>
                             </Box>
                         </Container>

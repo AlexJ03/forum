@@ -25,10 +25,10 @@ export const Profile = observer( () => {
                     <Box pt={5}>
                         <Container maxWidth="lg">
                             {userData.user?.name &&
-                                <Typography variant="h2" fontSize="30px" textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>
+                                <Typography variant="h2" sx={{ fontSize: { xs: "20px", md: "30px" } }} textAlign="center" mb={2}>Никнейм: {userData.user.name}</Typography>
                             }
 
-                            <Typography textAlign="center" mb={5} variant="h3" fontSize="25px">ID: { userData.user.token }</Typography>
+                            <Typography textAlign="center" mb={5} variant="h3" sx={{ fontSize: { xs: "17px", md: "25px" } }}>ID: { userData.user.token }</Typography>
 
                             <Box display="flex" justifyContent="center" mb={3}>
                                 <Toggle currentToggle={mobx.toggleProfile} data={["Вопросы", "Ответы"]} />

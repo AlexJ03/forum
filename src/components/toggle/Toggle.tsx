@@ -13,7 +13,7 @@ export const Toggle: FC<IToggle<toggleHomeType | toggleProfileType>> = observer(
             onChange={() => currentToggle.changeValue( currentToggle.value === data[0] ? data[1] : data[0] )}
             aria-label="Platform"
         >
-            { data && data.map( ( text: string ) => <ToggleButton key={text} value={text}>{text}</ToggleButton> ) }
+            { data && data.map( ( text: string ) => <ToggleButton size="small" key={text} value={text}>{text}</ToggleButton> ) }
         </ToggleButtonGroup>
     );
 } );

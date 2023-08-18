@@ -24,7 +24,7 @@ const NavController = observer( () => {
     return (
         <>
             <Button onClick={handleClick}>
-                <Typography fontSize="20px" marginX={2}>{ mobx.userData.getUser()?.name || token.getToken()}</Typography>
+                <Typography fontSize="20px" marginX={2}>{ mobx.userData.getUser()?.name || token.getToken() }</Typography>
                 { open ? <BiUpArrowAlt size={28} /> : <BiDownArrowAlt size={28} />}
             </Button>
 

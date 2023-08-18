@@ -46,7 +46,7 @@ const DiscussionController = ( { name }: Record<string, string> ) => {
     };
 
     return (
-        <Box display="flex" alignItems="center" columnGap={3} width="100%" px={5}>
+        <Box display="flex" alignItems="center" columnGap={3} sx={{ flexDirection: { xs: "column", md: "row" } }} width="100%" px={5}>
             <TextField onKeyDown={( e: any ) => handleKeyDown( e, createDiscussion )} sx={{ width: "80%" }} variant="outlined" value={discussion} onChange={e => setDiscussion( e.target.value )} type="text" placeholder="Сформулируйте вопрос" />
             <ButtonProgress success={success} loading={loading} fn={createDiscussion} error={error} data={undefined} />
         </Box>
