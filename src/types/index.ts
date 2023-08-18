@@ -3,6 +3,7 @@ import { IAnswer, IDiscussion, ICategory, IUserData, ICategories, IUsers } from 
 import { IAnswers, IUserFullData, IDiscussions, withRelocate, IWithRelocate } from "./entities";
 import { IToggle, toggleHomeType, toggleProfileType } from "./toggle";
 import { ISnackbar, statusSnackType } from "./snackbar";
+import { IProgressText, IProgress } from "./progress";
 
 export {
     IUserAuthData,
@@ -21,5 +22,7 @@ export {
     ISnackbar,
     statusSnackType,
     withRelocate,
-    IWithRelocate
+    IWithRelocate,
+    IProgressText,
+    IProgress
 };

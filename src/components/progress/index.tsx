@@ -1,10 +1,4 @@
-import { Box, CircularProgress } from "@mui/material";
+import { Progress } from "./Progress";
+import { ButtonProgress } from "./ButtonProgress";
 
-export const Progress = ( { pt }: Record<string, string | undefined> ) => {
-
-    return (
-        <Box display="flex" justifyContent="center" pt={pt ? pt : "40vh"}>
-            <CircularProgress />
-        </Box>
-    );
-};
+export { Progress, ButtonProgress };
