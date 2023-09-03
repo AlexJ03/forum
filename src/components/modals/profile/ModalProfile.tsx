@@ -1,6 +1,7 @@
 import { Box, Modal, TextField, Typography } from "@mui/material";
 import mobx from "@mobx";
 import { observer } from "mobx-react-lite";
+import type { KeyboardEvent } from "react";
 import { useState } from "react";
 import { database, handleKeyDown, token } from "@helpers";
 import type { IUserData } from "@types";
@@ -51,7 +52,7 @@ const ModalProfile = observer( () => {
                 </Typography>
 
                 <Box display="flex" flexDirection="column" rowGap={3}>
-                    <TextField onKeyDown={( e: any ) => handleKeyDown( e, saveUserData )} onChange={e => setName( e.target.value )} type="text" placeholder={ mobx.userData.data?.name || "Придумайте имя" }  />
+                    <TextField onKeyDown={( e: KeyboardEvent<HTMLInputElement> ) => handleKeyDown( e, saveUserData )} onChange={e => setName( e.target.value )} type="text" placeholder={ mobx.userData.data?.name || "Придумайте имя" }  />
                     <TextField type="text" label="ID" defaultValue={ token.getToken() } disabled />
 
                     <ButtonProgress success={success} loading={loading} fn={saveUserData} error={error} data={{ default: "Сохранить", error: "Не получилось сохранить", success: "Вы обновили данные!" }} />

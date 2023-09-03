@@ -1,6 +1,6 @@
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
-import type { IAnswer } from "@types";
+import type { IAnswer, IUserData } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
 import { fireError } from "@helpers";
 import mobx from "@mobx";
@@ -18,7 +18,7 @@ class Answers {
         }
     }
 
-    async createAnswer( answer: string, discussionName: string, fromUser: any ) {
+    async createAnswer( answer: string, discussionName: string, fromUser: IUserData ) {
         try {
             const data: WithFieldValue<IAnswer> = {
                 date: JSON.stringify( new Date ),

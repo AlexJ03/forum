@@ -7,7 +7,7 @@
     "start": "webpack serve --config webpack.dev.ts",
     "dev": "webpack --config webpack.dev.ts",
     "build": "webpack --config webpack.prod.ts",
-    "lint": "npx eslint \"src/\" --fix\n"
+    "lint": "npx eslint --fix src/**"
   },
   "keywords": [],
   "author": "",

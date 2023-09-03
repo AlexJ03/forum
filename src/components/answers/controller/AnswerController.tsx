@@ -1,4 +1,5 @@
 import { Box, TextField } from "@mui/material";
+import type { KeyboardEvent } from "react";
 import { useEffect, useState } from "react";
 import { token, database, handleKeyDown } from "@helpers";
 import type { IAnswer, IUserData } from "@types";
@@ -46,7 +47,7 @@ const AnswerController = ( { name }: Record<string, string> ) => {
 
     return (
         <Box display="flex" justifyContent="center" sx={{ flexDirection: { xs: "column", md: "row" } }} alignItems="center" columnGap={3} width="100%" px={5} mb={3}>
-            <TextField onKeyDown={( e: any ) => handleKeyDown( e, createAnswer )} sx={{ width: "80%" }} variant="outlined" value={answer} onChange={e => setAnswer( e.target.value )} type="text" placeholder="Введите свой ответ" />
+            <TextField onKeyDown={( e: KeyboardEvent<HTMLInputElement> ) => handleKeyDown( e, createAnswer )} sx={{ width: "80%" }} variant="outlined" value={answer} onChange={e => setAnswer( e.target.value )} type="text" placeholder="Введите свой ответ" />
             <ButtonProgress success={success} loading={loading} fn={createAnswer} error={error} data={undefined} />
         </Box>
     );

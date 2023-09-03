@@ -1,6 +1,7 @@
 import { Button, Menu, MenuItem, Typography } from "@mui/material";
 import { BiDownArrowAlt, BiUpArrowAlt } from "react-icons/bi";
 import { observer } from "mobx-react-lite";
+import type { BaseSyntheticEvent } from "react";
 import { useState } from "react";
 import mobx from "@mobx";
 import { ModalProfile } from "@components-modals";
@@ -13,7 +14,7 @@ const NavController = observer( () => {
 
     const open = Boolean( anchorEl );
 
-    const handleClick = ( event: any ) => {
+    const handleClick = ( event: BaseSyntheticEvent ) => {
         setAnchorEl( event.currentTarget );
     };
 

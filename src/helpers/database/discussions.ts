@@ -1,14 +1,13 @@
 import { arrayUnion, collection, doc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "@firebase-config";
-import type { IDiscussion, IUserData } from "@types";
+import type { IDiscussion } from "@types";
 import { type WithFieldValue } from "@firebase/firestore";
 import { fireError } from "@helpers";
 import mobx from "@mobx";
-import firebase from "firebase/compat";
-import FieldValue = firebase.firestore.FieldValue;
+import type { IUserData } from "@types";
 
 class Discussions {
-    async createDiscussion( categoryName: string, question: string, fromUser: any ) {
+    async createDiscussion( categoryName: string, question: string, fromUser: IUserData ) {
         try {
             const data: WithFieldValue<IDiscussion> = { name: question, category: categoryName, fromUser, date: JSON.stringify( new Date() ) };
             await setDoc( doc( db, "discussions", question ), data ).catch( error => fireError.setError( error.message ) );

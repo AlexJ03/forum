@@ -1,0 +1,12 @@
+name: Check React App
+on: push
+jobs:
+  lint:
+    runs-on: windows-latest
+    steps:
+      - name: Get repo code
+        uses: actions/checkout@v3
+      - name: Install modules
+        run: npm ci
+      - name: Lint app
+        run: npm run lint
